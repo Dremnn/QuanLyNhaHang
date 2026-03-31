@@ -49,9 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL layer\BanBLL.cs" />
+    <Compile Include="BL layer\DanhMucBLL.cs" />
+    <Compile Include="BL layer\DonHangBLL.cs" />
+    <Compile Include="BL layer\KhachHangBLL.cs" />
+    <Compile Include="BL layer\MonAnBLL.cs" />
     <Compile Include="BL layer\NguoiDungBLL.cs" />
+    <Compile Include="DB layer\BanDAO.cs" />
+    <Compile Include="DB layer\DanhMucDAO.cs" />
     <Compile Include="DB layer\DBConnection.cs" />
+    <Compile Include="DB layer\DonHangDAO.cs" />
     <Compile Include="DB layer\KhachHangDAO.cs" />
+    <Compile Include="DB layer\MonAnDAO.cs" />
     <Compile Include="DB layer\NguoiDungDAO.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -112,6 +121,9 @@
     <EmbeddedResource Include="Interface layer\Auth\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Interface layer\KhachHang\frmKhachHangMain.resx">
+      <DependentUpon>frmKhachHangMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -120,6 +132,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -135,6 +148,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\MonAn\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
