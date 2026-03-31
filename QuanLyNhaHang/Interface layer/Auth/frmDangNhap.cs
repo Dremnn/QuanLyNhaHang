@@ -87,12 +87,39 @@ namespace QuanLyNhaHang.Interface_layer.Auth
         private void btnDangKy_Click(object sender, EventArgs e)
         {
             frmDangKy frmDangKy = new frmDangKy();
+            this.Hide();
             frmDangKy.ShowDialog();
+            this.Show();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+        private void txtTenDangNhap_Click(object sender, EventArgs e)
+        {
+            txtTenDangNhap.PlaceholderText = "";
+        }
+
+        private void txtMatKhau_Click(object sender, EventArgs e)
+        {
+            txtMatKhau.PlaceholderText = "";
+        }
+        private void txtTenDangNhap_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenDangNhap.Text))
+            {
+                txtTenDangNhap.PlaceholderText = "Nhập tên đăng nhập";
+            }
+        }
+        private void txtMatKhau_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMatKhau.Text))
+            {
+                txtMatKhau.PlaceholderText = "Nhập mật khẩu";
+            }
+        }
+
     }
 }

@@ -161,6 +161,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSoDienThoai);
             this.Controls.Add(this.txtHoTen);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmDangKy";
             this.Text = "frmDangKy";
             this.ResumeLayout(false);
