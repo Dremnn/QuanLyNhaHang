@@ -58,7 +58,7 @@
             this.txtMatKhau.IconRight = ((System.Drawing.Image)(resources.GetObject("txtMatKhau.IconRight")));
             this.txtMatKhau.IconRightOffset = new System.Drawing.Point(5, 0);
             this.txtMatKhau.IconRightSize = new System.Drawing.Size(32, 32);
-            this.txtMatKhau.Location = new System.Drawing.Point(49, 234);
+            this.txtMatKhau.Location = new System.Drawing.Point(38, 211);
             this.txtMatKhau.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '\0';
@@ -81,10 +81,10 @@
             this.pnlDangNhap.Controls.Add(this.btnThoat);
             this.pnlDangNhap.Controls.Add(this.txtTenDangNhap);
             this.pnlDangNhap.Controls.Add(this.txtMatKhau);
-            this.pnlDangNhap.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pnlDangNhap.Location = new System.Drawing.Point(250, 75);
+            this.pnlDangNhap.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlDangNhap.Location = new System.Drawing.Point(70, 156);
             this.pnlDangNhap.Name = "pnlDangNhap";
-            this.pnlDangNhap.Size = new System.Drawing.Size(400, 450);
+            this.pnlDangNhap.Size = new System.Drawing.Size(360, 446);
             this.pnlDangNhap.TabIndex = 0;
             // 
             // label2
@@ -92,7 +92,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(137, 285);
+            this.label2.Location = new System.Drawing.Point(126, 272);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 15);
             this.label2.TabIndex = 16;
@@ -107,7 +107,7 @@
             this.btnDangKy.FillColor = System.Drawing.Color.Transparent;
             this.btnDangKy.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnDangKy.ForeColor = System.Drawing.Color.White;
-            this.btnDangKy.Location = new System.Drawing.Point(245, 280);
+            this.btnDangKy.Location = new System.Drawing.Point(234, 267);
             this.btnDangKy.Name = "btnDangKy";
             this.btnDangKy.Size = new System.Drawing.Size(94, 28);
             this.btnDangKy.TabIndex = 3;
@@ -119,7 +119,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(96, 50);
+            this.label1.Location = new System.Drawing.Point(85, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(214, 45);
             this.label1.TabIndex = 15;
@@ -135,7 +135,7 @@
             this.btnDangNhap.FillColor = System.Drawing.Color.White;
             this.btnDangNhap.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnDangNhap.ForeColor = System.Drawing.Color.Black;
-            this.btnDangNhap.Location = new System.Drawing.Point(217, 330);
+            this.btnDangNhap.Location = new System.Drawing.Point(206, 317);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(122, 45);
             this.btnDangNhap.TabIndex = 2;
@@ -152,7 +152,7 @@
             this.btnThoat.FillColor = System.Drawing.Color.White;
             this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnThoat.ForeColor = System.Drawing.Color.Black;
-            this.btnThoat.Location = new System.Drawing.Point(39, 330);
+            this.btnThoat.Location = new System.Drawing.Point(28, 317);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(132, 45);
             this.btnThoat.TabIndex = 1;
@@ -179,7 +179,7 @@
             this.txtTenDangNhap.IconRight = ((System.Drawing.Image)(resources.GetObject("txtTenDangNhap.IconRight")));
             this.txtTenDangNhap.IconRightOffset = new System.Drawing.Point(5, 0);
             this.txtTenDangNhap.IconRightSize = new System.Drawing.Size(32, 32);
-            this.txtTenDangNhap.Location = new System.Drawing.Point(49, 154);
+            this.txtTenDangNhap.Location = new System.Drawing.Point(38, 128);
             this.txtTenDangNhap.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTenDangNhap.Name = "txtTenDangNhap";
             this.txtTenDangNhap.PasswordChar = '\0';
@@ -198,7 +198,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(900, 600);
+            this.ClientSize = new System.Drawing.Size(500, 759);
             this.Controls.Add(this.pnlDangNhap);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmDangNhap";
