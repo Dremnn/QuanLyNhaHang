@@ -7,7 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace QuanLyNhaHang.Interface_layer.KhachHang
+namespace QuanLyNhaHang.Interface_layer.FrmKhachHang
 {
     public partial class frmKhachHangMain : Form
     {
@@ -151,6 +151,50 @@ namespace QuanLyNhaHang.Interface_layer.KhachHang
             dgvDonHang.AllowUserToAddRows = false;
             dgvDonHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDonHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void btnHuyDatBan_Click(object sender, EventArgs e)
+        {
+            if (dgvDonHang.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn đơn hàng muốn huỷ!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lấy trạng thái đơn được chọn
+            string trangThai = dgvDonHang.SelectedRows[0].Cells["colTrangThai"].Value.ToString();
+
+            if (trangThai != "ChoDuyet")
+            {
+                MessageBox.Show("Chỉ có thể huỷ đơn hàng đang ở trạng thái Chờ Duyệt!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int donHangId = Convert.ToInt32(dgvDonHang.SelectedRows[0].Cells["colId"].Value);
+
+            DialogResult confirm = MessageBox.Show(
+                "Xác nhận huỷ đặt bàn?", "Xác nhận",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm != DialogResult.Yes) return;
+
+            bool ketQua = donHangBLL.huyDatBan(donHangId);
+
+            if (ketQua)
+            {
+                MessageBox.Show("Huỷ đặt bàn thành công!", "Thành công",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                loadLichSuDonHang();
+                loadDanhSachBanTrong();
+            }
+            else
+            {
+                MessageBox.Show("Huỷ thất bại!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // ==========================================

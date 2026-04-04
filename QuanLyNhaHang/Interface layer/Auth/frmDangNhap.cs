@@ -13,8 +13,8 @@ using QuanLyNhaHang.Helpers;
 using QuanLyNhaHang.Model;
 
 using QuanLyNhaHang.Interface_layer.Admin;
-using QuanLyNhaHang.Interface_layer.NhanVien;
-using QuanLyNhaHang.Interface_layer.KhachHang;
+using QuanLyNhaHang.Interface_layer.FrmNhanVien;
+using QuanLyNhaHang.Interface_layer.FrmKhachHang;
 
 namespace QuanLyNhaHang.Interface_layer.Auth
 {

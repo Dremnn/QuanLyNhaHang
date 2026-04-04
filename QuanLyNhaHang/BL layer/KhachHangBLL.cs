@@ -23,5 +23,19 @@ namespace QuanLyNhaHang.BL_layer
 
             return khachHangDAO.update(khachHang);
         }
+
+        public KhachHang getBySoDienThoai(string soDienThoai)
+        {
+            return khachHangDAO.getBySoDienThoai(soDienThoai);
+        }
+
+        public int insertVangLai(KhachHang khachHang)
+        {
+            if (string.IsNullOrEmpty(khachHang.HoTen) ||
+                string.IsNullOrEmpty(khachHang.SoDienThoai))
+                return -1;
+
+            return khachHangDAO.insert(khachHang);
+        }
     }
 }

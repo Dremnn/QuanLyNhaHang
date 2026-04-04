@@ -50,18 +50,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL layer\BanBLL.cs" />
+    <Compile Include="BL layer\ChiTietDonBLL.cs" />
     <Compile Include="BL layer\DanhMucBLL.cs" />
     <Compile Include="BL layer\DonHangBLL.cs" />
     <Compile Include="BL layer\KhachHangBLL.cs" />
     <Compile Include="BL layer\MonAnBLL.cs" />
     <Compile Include="BL layer\NguoiDungBLL.cs" />
+    <Compile Include="BL layer\ThanhToanBLL.cs" />
     <Compile Include="DB layer\BanDAO.cs" />
+    <Compile Include="DB layer\ChiTietDonDAO.cs" />
     <Compile Include="DB layer\DanhMucDAO.cs" />
     <Compile Include="DB layer\DBConnection.cs" />
     <Compile Include="DB layer\DonHangDAO.cs" />
     <Compile Include="DB layer\KhachHangDAO.cs" />
     <Compile Include="DB layer\MonAnDAO.cs" />
     <Compile Include="DB layer\NguoiDungDAO.cs" />
+    <Compile Include="DB layer\ThanhToanDAO.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,17 +92,41 @@
     <Compile Include="Interface layer\Auth\frmDangNhap.Designer.cs">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interface layer\KhachHang\frmKhachHangMain.cs">
+    <Compile Include="Interface layer\FrmKhachHang\frmKhachHangMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interface layer\KhachHang\frmKhachHangMain.Designer.cs">
+    <Compile Include="Interface layer\FrmKhachHang\frmKhachHangMain.Designer.cs">
       <DependentUpon>frmKhachHangMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interface layer\NhanVien\frmNhanVienMain.cs">
+    <Compile Include="Interface layer\FrmNhanVien\frmChonBan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Interface layer\NhanVien\frmNhanVienMain.Designer.cs">
+    <Compile Include="Interface layer\FrmNhanVien\frmChonBan.Designer.cs">
+      <DependentUpon>frmChonBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface layer\FrmNhanVien\frmChonMon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface layer\FrmNhanVien\frmChonMon.Designer.cs">
+      <DependentUpon>frmChonMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface layer\FrmNhanVien\frmKhachVangLai.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface layer\FrmNhanVien\frmKhachVangLai.Designer.cs">
+      <DependentUpon>frmKhachVangLai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface layer\FrmNhanVien\frmNhanVienMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface layer\FrmNhanVien\frmNhanVienMain.Designer.cs">
       <DependentUpon>frmNhanVienMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface layer\FrmNhanVien\frmTimKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface layer\FrmNhanVien\frmTimKhachHang.Designer.cs">
+      <DependentUpon>frmTimKhachHang.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Ban.cs" />
@@ -121,8 +149,23 @@
     <EmbeddedResource Include="Interface layer\Auth\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interface layer\KhachHang\frmKhachHangMain.resx">
+    <EmbeddedResource Include="Interface layer\FrmKhachHang\frmKhachHangMain.resx">
       <DependentUpon>frmKhachHangMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface layer\FrmNhanVien\frmChonBan.resx">
+      <DependentUpon>frmChonBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface layer\FrmNhanVien\frmChonMon.resx">
+      <DependentUpon>frmChonMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface layer\FrmNhanVien\frmKhachVangLai.resx">
+      <DependentUpon>frmKhachVangLai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface layer\FrmNhanVien\frmNhanVienMain.resx">
+      <DependentUpon>frmNhanVienMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface layer\FrmNhanVien\frmTimKhachHang.resx">
+      <DependentUpon>frmTimKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -30,6 +30,27 @@ namespace QuanLyNhaHang.DB_layer
             return list;
         }
 
+        public List<Ban> getAll()
+        {
+            List<Ban> list = new List<Ban>();
+
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = @"SELECT Id, SoBan, SoCho, TrangThai
+                       FROM Ban
+                       ORDER BY SoBan";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(mapToBan(reader));
+            }
+
+            return list;
+        }
+
         // Cập nhật trạng thái bàn
         public bool updateTrangThai(int banId, string trangThai)
         {
