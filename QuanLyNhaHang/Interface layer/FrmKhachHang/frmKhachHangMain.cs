@@ -30,53 +30,25 @@ namespace QuanLyNhaHang.Interface_layer.FrmKhachHang
         // ==========================================
         private void frmKhachHangMain_Load(object sender, EventArgs e)
         {
-
-            // Lấy thông tin khách hàng từ session
             currentKhachHang = khachHangBLL.getByNguoiDungId(SessionHelper.CurrentUser.Id);
-
-            // Hiển thị tên chào mừng
             lblChaoMung.Text = $"Xin chào, {currentKhachHang.HoTen}!";
 
-            // Load dữ liệu các tab
-            loadDanhMuc();
-            loadMonAn(0);       // 0 = tất cả
+            // Gán sự kiện cho button danh mục
+            btnTatCa.Click += (s, ev) => loadMonAn(0);
+            btnMonCom.Click += (s, ev) => loadMonAn(1);
+            btnMonCanh.Click += (s, ev) => loadMonAn(2);
+            btnMonThem.Click += (s, ev) => loadMonAn(3);
+            btnGiaiKhat.Click += (s, ev) => loadMonAn(4);
+
+            loadMonAn(0);
             loadLichSuDonHang();
-            loadThongTinCaNhan();
             loadDanhSachBanTrong();
+            loadThongTinCaNhan();
         }
 
         // ==========================================
         // TAB THỰC ĐƠN
         // ==========================================
-        private void loadDanhMuc()
-        {
-            danhMucList = danhMucBLL.getAll();
-            pnlDanhMuc.Controls.Clear();
-
-            // Nút "Tất cả"
-            Button btnTatCa = createDanhMucButton("Tất cả", 0);
-            pnlDanhMuc.Controls.Add(btnTatCa);
-
-            // Nút từng danh mục
-            foreach (DanhMuc dm in danhMucList)
-            {
-                Button btn = createDanhMucButton(dm.TenDanhMuc, dm.Id);
-                pnlDanhMuc.Controls.Add(btn);
-            }
-        }
-
-        private Button createDanhMucButton(string text, int danhMucId)
-        {
-            Button btn = new Button();
-            btn.Text = text;
-            btn.Tag = danhMucId;
-            btn.Height = 35;
-            btn.Width = 100;
-            btn.Margin = new Padding(5);
-            btn.Click += (s, e) => loadMonAn(danhMucId);
-            return btn;
-        }
-
         private void loadMonAn(int danhMucId)
         {
             lvMonAn.Items.Clear();
@@ -320,6 +292,5 @@ namespace QuanLyNhaHang.Interface_layer.FrmKhachHang
             if (result == DialogResult.Yes)
                 this.Close();
         }
-
     }
 }

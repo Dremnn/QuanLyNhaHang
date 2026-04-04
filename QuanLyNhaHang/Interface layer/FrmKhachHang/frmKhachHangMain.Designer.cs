@@ -38,6 +38,7 @@
             this.lbDanhSachBan = new System.Windows.Forms.ListBox();
             this.lblChonBan = new System.Windows.Forms.Label();
             this.tabLichSu = new System.Windows.Forms.TabPage();
+            this.btnHuyDatBan = new System.Windows.Forms.Button();
             this.dgvDonHang = new System.Windows.Forms.DataGridView();
             this.tabThongTin = new System.Windows.Forms.TabPage();
             this.btnCapNhat = new System.Windows.Forms.Button();
@@ -52,9 +53,14 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.lblChaoMung = new System.Windows.Forms.Label();
-            this.btnHuyDatBan = new System.Windows.Forms.Button();
+            this.btnTatCa = new System.Windows.Forms.Button();
+            this.btnMonCom = new System.Windows.Forms.Button();
+            this.btnMonCanh = new System.Windows.Forms.Button();
+            this.btnMonThem = new System.Windows.Forms.Button();
+            this.btnGiaiKhat = new System.Windows.Forms.Button();
             this.tabMain.SuspendLayout();
             this.tabThucDon.SuspendLayout();
+            this.pnlDanhMuc.SuspendLayout();
             this.tabDatBan.SuspendLayout();
             this.tabLichSu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonHang)).BeginInit();
@@ -88,6 +94,11 @@
             // 
             // pnlDanhMuc
             // 
+            this.pnlDanhMuc.Controls.Add(this.btnTatCa);
+            this.pnlDanhMuc.Controls.Add(this.btnMonCom);
+            this.pnlDanhMuc.Controls.Add(this.btnMonCanh);
+            this.pnlDanhMuc.Controls.Add(this.btnMonThem);
+            this.pnlDanhMuc.Controls.Add(this.btnGiaiKhat);
             this.pnlDanhMuc.Location = new System.Drawing.Point(6, 7);
             this.pnlDanhMuc.Name = "pnlDanhMuc";
             this.pnlDanhMuc.Size = new System.Drawing.Size(951, 88);
@@ -165,6 +176,16 @@
             this.tabLichSu.TabIndex = 1;
             this.tabLichSu.Text = "Lich Su Don";
             this.tabLichSu.UseVisualStyleBackColor = true;
+            // 
+            // btnHuyDatBan
+            // 
+            this.btnHuyDatBan.Location = new System.Drawing.Point(741, 355);
+            this.btnHuyDatBan.Name = "btnHuyDatBan";
+            this.btnHuyDatBan.Size = new System.Drawing.Size(181, 34);
+            this.btnHuyDatBan.TabIndex = 2;
+            this.btnHuyDatBan.Text = "Huy Dat Ban";
+            this.btnHuyDatBan.UseVisualStyleBackColor = true;
+            this.btnHuyDatBan.Click += new System.EventHandler(this.btnHuyDatBan_Click);
             // 
             // dgvDonHang
             // 
@@ -297,15 +318,50 @@
             this.lblChaoMung.TabIndex = 0;
             this.lblChaoMung.Text = "Chao Mung , [Ten]";
             // 
-            // btnHuyDatBan
+            // btnTatCa
             // 
-            this.btnHuyDatBan.Location = new System.Drawing.Point(741, 355);
-            this.btnHuyDatBan.Name = "btnHuyDatBan";
-            this.btnHuyDatBan.Size = new System.Drawing.Size(181, 34);
-            this.btnHuyDatBan.TabIndex = 2;
-            this.btnHuyDatBan.Text = "Huy Dat Ban";
-            this.btnHuyDatBan.UseVisualStyleBackColor = true;
-            this.btnHuyDatBan.Click += new System.EventHandler(this.btnHuyDatBan_Click);
+            this.btnTatCa.Location = new System.Drawing.Point(3, 3);
+            this.btnTatCa.Name = "btnTatCa";
+            this.btnTatCa.Size = new System.Drawing.Size(149, 67);
+            this.btnTatCa.TabIndex = 0;
+            this.btnTatCa.Text = "Tat Ca";
+            this.btnTatCa.UseVisualStyleBackColor = true;
+            // 
+            // btnMonCom
+            // 
+            this.btnMonCom.Location = new System.Drawing.Point(158, 3);
+            this.btnMonCom.Name = "btnMonCom";
+            this.btnMonCom.Size = new System.Drawing.Size(149, 67);
+            this.btnMonCom.TabIndex = 1;
+            this.btnMonCom.Text = "Mon Com";
+            this.btnMonCom.UseVisualStyleBackColor = true;
+            // 
+            // btnMonCanh
+            // 
+            this.btnMonCanh.Location = new System.Drawing.Point(313, 3);
+            this.btnMonCanh.Name = "btnMonCanh";
+            this.btnMonCanh.Size = new System.Drawing.Size(149, 67);
+            this.btnMonCanh.TabIndex = 2;
+            this.btnMonCanh.Text = "Mon Canh";
+            this.btnMonCanh.UseVisualStyleBackColor = true;
+            // 
+            // btnMonThem
+            // 
+            this.btnMonThem.Location = new System.Drawing.Point(468, 3);
+            this.btnMonThem.Name = "btnMonThem";
+            this.btnMonThem.Size = new System.Drawing.Size(149, 67);
+            this.btnMonThem.TabIndex = 3;
+            this.btnMonThem.Text = "Mon Them";
+            this.btnMonThem.UseVisualStyleBackColor = true;
+            // 
+            // btnGiaiKhat
+            // 
+            this.btnGiaiKhat.Location = new System.Drawing.Point(623, 3);
+            this.btnGiaiKhat.Name = "btnGiaiKhat";
+            this.btnGiaiKhat.Size = new System.Drawing.Size(149, 67);
+            this.btnGiaiKhat.TabIndex = 4;
+            this.btnGiaiKhat.Text = "Giai Khat";
+            this.btnGiaiKhat.UseVisualStyleBackColor = true;
             // 
             // frmKhachHangMain
             // 
@@ -319,6 +375,7 @@
             this.Load += new System.EventHandler(this.frmKhachHangMain_Load);
             this.tabMain.ResumeLayout(false);
             this.tabThucDon.ResumeLayout(false);
+            this.pnlDanhMuc.ResumeLayout(false);
             this.tabDatBan.ResumeLayout(false);
             this.tabDatBan.PerformLayout();
             this.tabLichSu.ResumeLayout(false);
@@ -358,5 +415,10 @@
         private System.Windows.Forms.Label lblThongTinBan;
         private System.Windows.Forms.Button btnDatBan;
         private System.Windows.Forms.Button btnHuyDatBan;
+        private System.Windows.Forms.Button btnTatCa;
+        private System.Windows.Forms.Button btnMonCom;
+        private System.Windows.Forms.Button btnMonCanh;
+        private System.Windows.Forms.Button btnMonThem;
+        private System.Windows.Forms.Button btnGiaiKhat;
     }
 }

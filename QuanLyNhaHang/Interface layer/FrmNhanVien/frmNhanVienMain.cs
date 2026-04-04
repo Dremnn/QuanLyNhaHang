@@ -46,9 +46,16 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
             cboPhuongThuc.Items.Add("ViDienTu");
             cboPhuongThuc.SelectedIndex = 0;
 
+            // Gán sự kiện cho button danh mục
+            btnTatCa.Click += (s, ev) => loadMonAnNV(0);
+            btnMonCom.Click += (s, ev) => loadMonAnNV(1);
+            btnMonCanh.Click += (s, ev) => loadMonAnNV(2);
+            btnMonThem.Click += (s, ev) => loadMonAnNV(3);
+            btnGiaiKhat.Click += (s, ev) => loadMonAnNV(4);
+
+            loadMonAnNV(0);
             loadDanhSachBan();
             loadDonHangDangMo();
-            loadThucDon();
         }
 
         // ==========================================
@@ -493,33 +500,6 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
         // ==========================================
         // TAB THỰC ĐƠN — giữ nguyên vì đây là dynamic UI hợp lệ
         // ==========================================
-        private void loadThucDon()
-        {
-            List<DanhMuc> danhMucList = danhMucBLL.getAll();
-            pnlDanhMucNV.Controls.Clear();
-
-            Button btnTatCa = new Button();
-            btnTatCa.Text = "Tất cả";
-            btnTatCa.Height = 35;
-            btnTatCa.Width = 100;
-            btnTatCa.Margin = new Padding(5);
-            btnTatCa.Click += (s, ev) => loadMonAnNV(0);
-            pnlDanhMucNV.Controls.Add(btnTatCa);
-
-            foreach (DanhMuc dm in danhMucList)
-            {
-                Button btn = new Button();
-                btn.Text = dm.TenDanhMuc;
-                btn.Height = 35;
-                btn.Width = 100;
-                btn.Margin = new Padding(5);
-                btn.Tag = dm.Id;
-                btn.Click += (s, ev) => loadMonAnNV(dm.Id);
-                pnlDanhMucNV.Controls.Add(btn);
-            }
-
-            loadMonAnNV(0);
-        }
 
         private void loadMonAnNV(int danhMucId)
         {
