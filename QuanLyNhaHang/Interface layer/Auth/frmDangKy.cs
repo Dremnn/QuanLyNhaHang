@@ -77,5 +77,60 @@ namespace QuanLyNhaHang.Interface_layer.Auth
         {
             this.Close();
         }
+
+        private void txtHoTen_Click(object sender, EventArgs e)
+        {
+            txtHoTen.PlaceholderText = "";
+        }
+
+        private void txtSoDienThoai_Click(object sender, EventArgs e)
+        {
+            txtSoDienThoai.PlaceholderText = "";
+        }
+
+        private void txtTenDangNhap_Click(object sender, EventArgs e)
+        {
+            txtTenDangNhap.PlaceholderText = "";
+        }
+
+        private void txtMatKhau_Click(object sender, EventArgs e)
+        {
+            txtMatKhau.PlaceholderText = "";
+        }
+
+        private void txtXacNhanMatKhau_Click(object sender, EventArgs e)
+        {
+            txtXacNhanMatKhau.PlaceholderText = "";
+        }
+
+        private void txtHoTen_Leave(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtHoTen.Text))
+                txtHoTen.PlaceholderText = "Họ tên";
+        }
+
+        private void txtSoDienThoai_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtSoDienThoai.Text))
+                txtSoDienThoai.PlaceholderText = "Số điện thoại";
+        }
+
+        private void txtTenDangNhap_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenDangNhap.Text))
+                txtTenDangNhap.PlaceholderText = "Tên đăng nhập";
+        }
+
+        private void txtMatKhau_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMatKhau.Text))
+                txtMatKhau.PlaceholderText = "Mật khẩu";
+        }
+
+        private void txtXacNhanMatKhau_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtXacNhanMatKhau.Text))
+                txtXacNhanMatKhau.PlaceholderText = "Xác nhận mật khẩu";
+        }
     }
 }

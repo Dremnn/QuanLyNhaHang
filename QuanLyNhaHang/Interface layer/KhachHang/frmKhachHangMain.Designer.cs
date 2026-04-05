@@ -30,6 +30,13 @@
         {
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabThucDon = new System.Windows.Forms.TabPage();
+            this.pnlDanhMuc = new System.Windows.Forms.FlowLayoutPanel();
+            this.lvMonAn = new System.Windows.Forms.ListView();
+            this.tabDatBan = new System.Windows.Forms.TabPage();
+            this.btnDatBan = new System.Windows.Forms.Button();
+            this.lblThongTinBan = new System.Windows.Forms.Label();
+            this.lbDanhSachBan = new System.Windows.Forms.ListBox();
+            this.lblChonBan = new System.Windows.Forms.Label();
             this.tabLichSu = new System.Windows.Forms.TabPage();
             this.dgvDonHang = new System.Windows.Forms.DataGridView();
             this.tabThongTin = new System.Windows.Forms.TabPage();
@@ -45,20 +52,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.lblChaoMung = new System.Windows.Forms.Label();
-            this.lvMonAn = new System.Windows.Forms.ListView();
-            this.pnlDanhMuc = new System.Windows.Forms.FlowLayoutPanel();
-            this.tabDatBan = new System.Windows.Forms.TabPage();
-            this.lblChonBan = new System.Windows.Forms.Label();
-            this.lbDanhSachBan = new System.Windows.Forms.ListBox();
-            this.lblThongTinBan = new System.Windows.Forms.Label();
-            this.btnDatBan = new System.Windows.Forms.Button();
             this.tabMain.SuspendLayout();
             this.tabThucDon.SuspendLayout();
+            this.tabDatBan.SuspendLayout();
             this.tabLichSu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonHang)).BeginInit();
             this.tabThongTin.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.tabDatBan.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMain
@@ -67,10 +67,10 @@
             this.tabMain.Controls.Add(this.tabDatBan);
             this.tabMain.Controls.Add(this.tabLichSu);
             this.tabMain.Controls.Add(this.tabThongTin);
-            this.tabMain.Location = new System.Drawing.Point(12, 88);
+            this.tabMain.Location = new System.Drawing.Point(12, 94);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(972, 438);
+            this.tabMain.Size = new System.Drawing.Size(972, 432);
             this.tabMain.TabIndex = 0;
             // 
             // tabThucDon
@@ -80,10 +80,78 @@
             this.tabThucDon.Location = new System.Drawing.Point(4, 25);
             this.tabThucDon.Name = "tabThucDon";
             this.tabThucDon.Padding = new System.Windows.Forms.Padding(3);
-            this.tabThucDon.Size = new System.Drawing.Size(964, 409);
+            this.tabThucDon.Size = new System.Drawing.Size(964, 403);
             this.tabThucDon.TabIndex = 0;
             this.tabThucDon.Text = "Thuc Don";
             this.tabThucDon.UseVisualStyleBackColor = true;
+            // 
+            // pnlDanhMuc
+            // 
+            this.pnlDanhMuc.Location = new System.Drawing.Point(6, 7);
+            this.pnlDanhMuc.Name = "pnlDanhMuc";
+            this.pnlDanhMuc.Size = new System.Drawing.Size(951, 88);
+            this.pnlDanhMuc.TabIndex = 1;
+            // 
+            // lvMonAn
+            // 
+            this.lvMonAn.HideSelection = false;
+            this.lvMonAn.Location = new System.Drawing.Point(6, 101);
+            this.lvMonAn.Name = "lvMonAn";
+            this.lvMonAn.Size = new System.Drawing.Size(952, 302);
+            this.lvMonAn.TabIndex = 0;
+            this.lvMonAn.UseCompatibleStateImageBehavior = false;
+            // 
+            // tabDatBan
+            // 
+            this.tabDatBan.Controls.Add(this.btnDatBan);
+            this.tabDatBan.Controls.Add(this.lblThongTinBan);
+            this.tabDatBan.Controls.Add(this.lbDanhSachBan);
+            this.tabDatBan.Controls.Add(this.lblChonBan);
+            this.tabDatBan.Location = new System.Drawing.Point(4, 25);
+            this.tabDatBan.Name = "tabDatBan";
+            this.tabDatBan.Padding = new System.Windows.Forms.Padding(3);
+            this.tabDatBan.Size = new System.Drawing.Size(964, 403);
+            this.tabDatBan.TabIndex = 3;
+            this.tabDatBan.Text = "Dat Ban";
+            this.tabDatBan.UseVisualStyleBackColor = true;
+            // 
+            // btnDatBan
+            // 
+            this.btnDatBan.Location = new System.Drawing.Point(741, 49);
+            this.btnDatBan.Name = "btnDatBan";
+            this.btnDatBan.Size = new System.Drawing.Size(181, 34);
+            this.btnDatBan.TabIndex = 2;
+            this.btnDatBan.Text = "Dat Ban";
+            this.btnDatBan.UseVisualStyleBackColor = true;
+            this.btnDatBan.Click += new System.EventHandler(this.btnDatBan_Click);
+            // 
+            // lblThongTinBan
+            // 
+            this.lblThongTinBan.AutoSize = true;
+            this.lblThongTinBan.Location = new System.Drawing.Point(186, 99);
+            this.lblThongTinBan.Name = "lblThongTinBan";
+            this.lblThongTinBan.Size = new System.Drawing.Size(94, 16);
+            this.lblThongTinBan.TabIndex = 2;
+            this.lblThongTinBan.Text = "Thong tin ban :";
+            // 
+            // lbDanhSachBan
+            // 
+            this.lbDanhSachBan.FormattingEnabled = true;
+            this.lbDanhSachBan.ItemHeight = 16;
+            this.lbDanhSachBan.Location = new System.Drawing.Point(324, 49);
+            this.lbDanhSachBan.Name = "lbDanhSachBan";
+            this.lbDanhSachBan.Size = new System.Drawing.Size(281, 324);
+            this.lbDanhSachBan.TabIndex = 1;
+            this.lbDanhSachBan.SelectedIndexChanged += new System.EventHandler(this.lbDanhSachBan_SelectedIndexChanged);
+            // 
+            // lblChonBan
+            // 
+            this.lblChonBan.AutoSize = true;
+            this.lblChonBan.Location = new System.Drawing.Point(186, 49);
+            this.lblChonBan.Name = "lblChonBan";
+            this.lblChonBan.Size = new System.Drawing.Size(100, 16);
+            this.lblChonBan.TabIndex = 0;
+            this.lblChonBan.Text = "Chọn bàn trống:";
             // 
             // tabLichSu
             // 
@@ -91,7 +159,7 @@
             this.tabLichSu.Location = new System.Drawing.Point(4, 25);
             this.tabLichSu.Name = "tabLichSu";
             this.tabLichSu.Padding = new System.Windows.Forms.Padding(3);
-            this.tabLichSu.Size = new System.Drawing.Size(964, 409);
+            this.tabLichSu.Size = new System.Drawing.Size(964, 403);
             this.tabLichSu.TabIndex = 1;
             this.tabLichSu.Text = "Lich Su Don";
             this.tabLichSu.UseVisualStyleBackColor = true;
@@ -120,7 +188,7 @@
             this.tabThongTin.Location = new System.Drawing.Point(4, 25);
             this.tabThongTin.Name = "tabThongTin";
             this.tabThongTin.Padding = new System.Windows.Forms.Padding(3);
-            this.tabThongTin.Size = new System.Drawing.Size(964, 409);
+            this.tabThongTin.Size = new System.Drawing.Size(964, 403);
             this.tabThongTin.TabIndex = 2;
             this.tabThongTin.Text = "Thong Tin";
             this.tabThongTin.UseVisualStyleBackColor = true;
@@ -227,74 +295,6 @@
             this.lblChaoMung.TabIndex = 0;
             this.lblChaoMung.Text = "Chao Mung , [Ten]";
             // 
-            // lvMonAn
-            // 
-            this.lvMonAn.HideSelection = false;
-            this.lvMonAn.Location = new System.Drawing.Point(6, 101);
-            this.lvMonAn.Name = "lvMonAn";
-            this.lvMonAn.Size = new System.Drawing.Size(952, 302);
-            this.lvMonAn.TabIndex = 0;
-            this.lvMonAn.UseCompatibleStateImageBehavior = false;
-            // 
-            // pnlDanhMuc
-            // 
-            this.pnlDanhMuc.Location = new System.Drawing.Point(6, 7);
-            this.pnlDanhMuc.Name = "pnlDanhMuc";
-            this.pnlDanhMuc.Size = new System.Drawing.Size(951, 88);
-            this.pnlDanhMuc.TabIndex = 1;
-            // 
-            // tabDatBan
-            // 
-            this.tabDatBan.Controls.Add(this.btnDatBan);
-            this.tabDatBan.Controls.Add(this.lblThongTinBan);
-            this.tabDatBan.Controls.Add(this.lbDanhSachBan);
-            this.tabDatBan.Controls.Add(this.lblChonBan);
-            this.tabDatBan.Location = new System.Drawing.Point(4, 25);
-            this.tabDatBan.Name = "tabDatBan";
-            this.tabDatBan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDatBan.Size = new System.Drawing.Size(964, 409);
-            this.tabDatBan.TabIndex = 3;
-            this.tabDatBan.Text = "Dat Ban";
-            this.tabDatBan.UseVisualStyleBackColor = true;
-            // 
-            // lblChonBan
-            // 
-            this.lblChonBan.AutoSize = true;
-            this.lblChonBan.Location = new System.Drawing.Point(186, 49);
-            this.lblChonBan.Name = "lblChonBan";
-            this.lblChonBan.Size = new System.Drawing.Size(100, 16);
-            this.lblChonBan.TabIndex = 0;
-            this.lblChonBan.Text = "Chọn bàn trống:";
-            // 
-            // lbDanhSachBan
-            // 
-            this.lbDanhSachBan.FormattingEnabled = true;
-            this.lbDanhSachBan.ItemHeight = 16;
-            this.lbDanhSachBan.Location = new System.Drawing.Point(324, 49);
-            this.lbDanhSachBan.Name = "lbDanhSachBan";
-            this.lbDanhSachBan.Size = new System.Drawing.Size(281, 324);
-            this.lbDanhSachBan.TabIndex = 1;
-            this.lbDanhSachBan.SelectedIndexChanged += new System.EventHandler(this.lbDanhSachBan_SelectedIndexChanged);
-            // 
-            // lblThongTinBan
-            // 
-            this.lblThongTinBan.AutoSize = true;
-            this.lblThongTinBan.Location = new System.Drawing.Point(186, 99);
-            this.lblThongTinBan.Name = "lblThongTinBan";
-            this.lblThongTinBan.Size = new System.Drawing.Size(94, 16);
-            this.lblThongTinBan.TabIndex = 2;
-            this.lblThongTinBan.Text = "Thong tin ban :";
-            // 
-            // btnDatBan
-            // 
-            this.btnDatBan.Location = new System.Drawing.Point(741, 49);
-            this.btnDatBan.Name = "btnDatBan";
-            this.btnDatBan.Size = new System.Drawing.Size(181, 34);
-            this.btnDatBan.TabIndex = 2;
-            this.btnDatBan.Text = "Dat Ban";
-            this.btnDatBan.UseVisualStyleBackColor = true;
-            this.btnDatBan.Click += new System.EventHandler(this.btnDatBan_Click);
-            // 
             // frmKhachHangMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -307,14 +307,14 @@
             this.Load += new System.EventHandler(this.frmKhachHangMain_Load);
             this.tabMain.ResumeLayout(false);
             this.tabThucDon.ResumeLayout(false);
+            this.tabDatBan.ResumeLayout(false);
+            this.tabDatBan.PerformLayout();
             this.tabLichSu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonHang)).EndInit();
             this.tabThongTin.ResumeLayout(false);
             this.tabThongTin.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.tabDatBan.ResumeLayout(false);
-            this.tabDatBan.PerformLayout();
             this.ResumeLayout(false);
 
         }

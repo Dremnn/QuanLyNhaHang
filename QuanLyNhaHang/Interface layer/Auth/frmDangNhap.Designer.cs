@@ -73,7 +73,7 @@
             // pnlDangNhap
             // 
             this.pnlDangNhap.BackColor = System.Drawing.Color.Transparent;
-            this.pnlDangNhap.BorderRadius = 30;
+            this.pnlDangNhap.BorderRadius = 40;
             this.pnlDangNhap.Controls.Add(this.label2);
             this.pnlDangNhap.Controls.Add(this.btnDangKy);
             this.pnlDangNhap.Controls.Add(this.label1);
@@ -81,7 +81,7 @@
             this.pnlDangNhap.Controls.Add(this.btnThoat);
             this.pnlDangNhap.Controls.Add(this.txtTenDangNhap);
             this.pnlDangNhap.Controls.Add(this.txtMatKhau);
-            this.pnlDangNhap.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pnlDangNhap.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.pnlDangNhap.Location = new System.Drawing.Point(70, 156);
             this.pnlDangNhap.Name = "pnlDangNhap";
             this.pnlDangNhap.Size = new System.Drawing.Size(360, 446);
@@ -201,6 +201,7 @@
             this.ClientSize = new System.Drawing.Size(500, 759);
             this.Controls.Add(this.pnlDangNhap);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
