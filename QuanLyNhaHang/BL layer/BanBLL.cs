@@ -13,6 +13,11 @@ namespace QuanLyNhaHang.BL_layer
             return banDAO.getBanTrong();
         }
 
+        public List<Ban> getAll()
+        {
+            return banDAO.getAll();
+        }
+
         public bool updateTrangThai(int banId, string trangThai)
         {
             return banDAO.updateTrangThai(banId, trangThai);

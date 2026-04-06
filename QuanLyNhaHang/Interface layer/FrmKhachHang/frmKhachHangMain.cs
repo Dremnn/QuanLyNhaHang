@@ -7,7 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace QuanLyNhaHang.Interface_layer.KhachHang
+namespace QuanLyNhaHang.Interface_layer.FrmKhachHang
 {
     public partial class frmKhachHangMain : Form
     {
@@ -30,53 +30,25 @@ namespace QuanLyNhaHang.Interface_layer.KhachHang
         // ==========================================
         private void frmKhachHangMain_Load(object sender, EventArgs e)
         {
-
-            // Lấy thông tin khách hàng từ session
             currentKhachHang = khachHangBLL.getByNguoiDungId(SessionHelper.CurrentUser.Id);
-
-            // Hiển thị tên chào mừng
             lblChaoMung.Text = $"Xin chào, {currentKhachHang.HoTen}!";
 
-            // Load dữ liệu các tab
-            loadDanhMuc();
-            loadMonAn(0);       // 0 = tất cả
+            // Gán sự kiện cho button danh mục
+            btnTatCa.Click += (s, ev) => loadMonAn(0);
+            btnMonCom.Click += (s, ev) => loadMonAn(1);
+            btnMonCanh.Click += (s, ev) => loadMonAn(2);
+            btnMonThem.Click += (s, ev) => loadMonAn(3);
+            btnGiaiKhat.Click += (s, ev) => loadMonAn(4);
+
+            loadMonAn(0);
             loadLichSuDonHang();
-            loadThongTinCaNhan();
             loadDanhSachBanTrong();
+            loadThongTinCaNhan();
         }
 
         // ==========================================
         // TAB THỰC ĐƠN
         // ==========================================
-        private void loadDanhMuc()
-        {
-            danhMucList = danhMucBLL.getAll();
-            pnlDanhMuc.Controls.Clear();
-
-            // Nút "Tất cả"
-            Button btnTatCa = createDanhMucButton("Tất cả", 0);
-            pnlDanhMuc.Controls.Add(btnTatCa);
-
-            // Nút từng danh mục
-            foreach (DanhMuc dm in danhMucList)
-            {
-                Button btn = createDanhMucButton(dm.TenDanhMuc, dm.Id);
-                pnlDanhMuc.Controls.Add(btn);
-            }
-        }
-
-        private Button createDanhMucButton(string text, int danhMucId)
-        {
-            Button btn = new Button();
-            btn.Text = text;
-            btn.Tag = danhMucId;
-            btn.Height = 35;
-            btn.Width = 100;
-            btn.Margin = new Padding(5);
-            btn.Click += (s, e) => loadMonAn(danhMucId);
-            return btn;
-        }
-
         private void loadMonAn(int danhMucId)
         {
             lvMonAn.Items.Clear();
@@ -151,6 +123,50 @@ namespace QuanLyNhaHang.Interface_layer.KhachHang
             dgvDonHang.AllowUserToAddRows = false;
             dgvDonHang.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDonHang.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        }
+
+        private void btnHuyDatBan_Click(object sender, EventArgs e)
+        {
+            if (dgvDonHang.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn đơn hàng muốn huỷ!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lấy trạng thái đơn được chọn
+            string trangThai = dgvDonHang.SelectedRows[0].Cells["colTrangThai"].Value.ToString();
+
+            if (trangThai != "ChoDuyet")
+            {
+                MessageBox.Show("Chỉ có thể huỷ đơn hàng đang ở trạng thái Chờ Duyệt!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int donHangId = Convert.ToInt32(dgvDonHang.SelectedRows[0].Cells["colId"].Value);
+
+            DialogResult confirm = MessageBox.Show(
+                "Xác nhận huỷ đặt bàn?", "Xác nhận",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm != DialogResult.Yes) return;
+
+            bool ketQua = donHangBLL.huyDatBan(donHangId);
+
+            if (ketQua)
+            {
+                MessageBox.Show("Huỷ đặt bàn thành công!", "Thành công",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                loadLichSuDonHang();
+                loadDanhSachBanTrong();
+            }
+            else
+            {
+                MessageBox.Show("Huỷ thất bại!", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // ==========================================
@@ -276,6 +292,5 @@ namespace QuanLyNhaHang.Interface_layer.KhachHang
             if (result == DialogResult.Yes)
                 this.Close();
         }
-
     }
 }

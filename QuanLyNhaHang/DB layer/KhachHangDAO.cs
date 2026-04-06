@@ -81,5 +81,25 @@ namespace QuanLyNhaHang.DB_layer
                 NgayTaoKH = Convert.ToDateTime(reader["NgayTao"])
             };
         }
+
+        public KhachHang getBySoDienThoai(string soDienThoai)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = @"SELECT Id, NguoiDungId, HoTen, SoDienThoai, Email, DiaChi, NgayTao
+                       FROM KhachHang
+                       WHERE SoDienThoai = @soDienThoai";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@soDienThoai", soDienThoai);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                    return mapToKhachHang(reader);
+
+                return null;
+            }
+        }
     }
 }
