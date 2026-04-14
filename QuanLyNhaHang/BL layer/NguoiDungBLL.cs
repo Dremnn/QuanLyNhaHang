@@ -70,5 +70,24 @@ namespace QuanLyNhaHang.BL_layer
             int khachHangId = khachHangDAO.insert(khachHang);
             return khachHangId > 0;
         }
+
+        public List<NguoiDung> getAll()
+        {
+            return nguoiDungDAO.getAll();
+        }
+
+        public bool updateHoatDong(int id, bool hoatDong)
+        {
+            return nguoiDungDAO.updateHoatDong(id, hoatDong);
+        }
+
+        public bool updateVaiTro(int id, string vaiTro)
+        {
+            // Không cho đổi vai trò của chính mình
+            if (id == SessionHelper.CurrentUser.Id)
+                return false;
+
+            return nguoiDungDAO.updateVaiTro(id, vaiTro);
+        }
     }
 }

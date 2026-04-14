@@ -1,6 +1,7 @@
-﻿using System;
+﻿using QuanLyNhaHang.Model;
+using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
-using QuanLyNhaHang.Model;
 
 namespace QuanLyNhaHang.DB_layer
 {
@@ -68,6 +69,35 @@ namespace QuanLyNhaHang.DB_layer
                 GhiChu = reader["GhiChu"] == DBNull.Value ? null : reader["GhiChu"].ToString(),
                 NgayThanhToan = Convert.ToDateTime(reader["NgayThanhToan"])
             };
+        }
+
+        public List<ThanhToan> getByNgay(DateTime tuNgay, DateTime denNgay)
+        {
+            List<ThanhToan> list = new List<ThanhToan>();
+
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = @"SELECT tt.Id, tt.DonHangId, tt.TongTien, tt.TienGiam,
+                              tt.TienThanhToan, tt.PhuongThuc, tt.TrangThai,
+                              tt.GhiChu, tt.NgayThanhToan
+                       FROM ThanhToan tt
+                       WHERE tt.TrangThai = 'ThanhCong'
+                       AND CAST(tt.NgayThanhToan AS DATE) 
+                           BETWEEN @tuNgay AND @denNgay
+                       ORDER BY tt.NgayThanhToan DESC";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@tuNgay", tuNgay.Date);
+                cmd.Parameters.AddWithValue("@denNgay", denNgay.Date);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(mapToThanhToan(reader));
+            }
+
+            return list;
         }
     }
 }

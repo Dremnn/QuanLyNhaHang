@@ -53,13 +53,13 @@
             this.dgvBan = new System.Windows.Forms.DataGridView();
             this.lvMonAnNV = new System.Windows.Forms.ListView();
             this.pnlDanhMucNV = new System.Windows.Forms.FlowLayoutPanel();
-            this.tabThucDon = new System.Windows.Forms.TabPage();
-            this.tabMain = new System.Windows.Forms.TabControl();
             this.btnTatCa = new System.Windows.Forms.Button();
             this.btnMonCom = new System.Windows.Forms.Button();
             this.btnMonCanh = new System.Windows.Forms.Button();
             this.btnMonThem = new System.Windows.Forms.Button();
             this.btnGiaiKhat = new System.Windows.Forms.Button();
+            this.tabThucDon = new System.Windows.Forms.TabPage();
+            this.tabMain = new System.Windows.Forms.TabControl();
             this.pnlHeader.SuspendLayout();
             this.tabThanhToan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTienGiam)).BeginInit();
@@ -91,6 +91,7 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(963, 76);
             this.pnlHeader.TabIndex = 3;
+            this.pnlHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlHeader_Paint);
             // 
             // lblNhanVien
             // 
@@ -100,6 +101,7 @@
             this.lblNhanVien.Size = new System.Drawing.Size(107, 16);
             this.lblNhanVien.TabIndex = 0;
             this.lblNhanVien.Text = "Nhan Vien: [Ten]";
+            this.lblNhanVien.Click += new System.EventHandler(this.lblNhanVien_Click);
             // 
             // tabThanhToan
             // 
@@ -117,6 +119,7 @@
             this.tabThanhToan.TabIndex = 2;
             this.tabThanhToan.Text = "Thanh Toan";
             this.tabThanhToan.UseVisualStyleBackColor = true;
+            this.tabThanhToan.Click += new System.EventHandler(this.tabThanhToan_Click);
             // 
             // lblMaDon
             // 
@@ -126,6 +129,7 @@
             this.lblMaDon.Size = new System.Drawing.Size(73, 16);
             this.lblMaDon.TabIndex = 5;
             this.lblMaDon.Text = "Mã đơn: [n]";
+            this.lblMaDon.Click += new System.EventHandler(this.lblMaDon_Click);
             // 
             // btnThanhToan
             // 
@@ -143,6 +147,7 @@
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.Size = new System.Drawing.Size(419, 22);
             this.txtGhiChu.TabIndex = 4;
+            this.txtGhiChu.TextChanged += new System.EventHandler(this.txtGhiChu_TextChanged);
             // 
             // cboPhuongThuc
             // 
@@ -151,6 +156,7 @@
             this.cboPhuongThuc.Name = "cboPhuongThuc";
             this.cboPhuongThuc.Size = new System.Drawing.Size(202, 24);
             this.cboPhuongThuc.TabIndex = 3;
+            this.cboPhuongThuc.SelectedIndexChanged += new System.EventHandler(this.cboPhuongThuc_SelectedIndexChanged);
             // 
             // lblTienThanhToan
             // 
@@ -160,6 +166,7 @@
             this.lblTienThanhToan.Size = new System.Drawing.Size(110, 16);
             this.lblTienThanhToan.TabIndex = 2;
             this.lblTienThanhToan.Text = "Tien Thanh Toan";
+            this.lblTienThanhToan.Click += new System.EventHandler(this.lblTienThanhToan_Click);
             // 
             // nudTienGiam
             // 
@@ -177,6 +184,7 @@
             this.lblTongTien.Size = new System.Drawing.Size(75, 16);
             this.lblTongTien.TabIndex = 0;
             this.lblTongTien.Text = "Tong Tien :";
+            this.lblTongTien.Click += new System.EventHandler(this.lblTongTien_Click);
             // 
             // dgvDonHang
             // 
@@ -187,6 +195,7 @@
             this.dgvDonHang.RowTemplate.Height = 24;
             this.dgvDonHang.Size = new System.Drawing.Size(576, 177);
             this.dgvDonHang.TabIndex = 0;
+            this.dgvDonHang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDonHang_CellContentClick);
             this.dgvDonHang.SelectionChanged += new System.EventHandler(this.dgvDonHang_SelectionChanged);
             // 
             // tabDonHang
@@ -204,6 +213,7 @@
             this.tabDonHang.TabIndex = 1;
             this.tabDonHang.Text = "DonHang";
             this.tabDonHang.UseVisualStyleBackColor = true;
+            this.tabDonHang.Click += new System.EventHandler(this.tabDonHang_Click);
             // 
             // btnCapNhatTrangThai
             // 
@@ -254,6 +264,7 @@
             this.dgvChiTiet.RowTemplate.Height = 24;
             this.dgvChiTiet.Size = new System.Drawing.Size(576, 177);
             this.dgvChiTiet.TabIndex = 1;
+            this.dgvChiTiet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChiTiet_CellContentClick);
             // 
             // tabBan
             // 
@@ -268,6 +279,7 @@
             this.tabBan.TabIndex = 3;
             this.tabBan.Text = "Quan Ly Ban";
             this.tabBan.UseVisualStyleBackColor = true;
+            this.tabBan.Click += new System.EventHandler(this.tabBan_Click);
             // 
             // btnHuyDatBan
             // 
@@ -296,6 +308,7 @@
             this.cboTrangThaiBan.Name = "cboTrangThaiBan";
             this.cboTrangThaiBan.Size = new System.Drawing.Size(181, 24);
             this.cboTrangThaiBan.TabIndex = 1;
+            this.cboTrangThaiBan.SelectedIndexChanged += new System.EventHandler(this.cboTrangThaiBan_SelectedIndexChanged);
             // 
             // dgvBan
             // 
@@ -306,6 +319,7 @@
             this.dgvBan.RowTemplate.Height = 24;
             this.dgvBan.Size = new System.Drawing.Size(599, 364);
             this.dgvBan.TabIndex = 0;
+            this.dgvBan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBan_CellContentClick);
             this.dgvBan.SelectionChanged += new System.EventHandler(this.dgvBan_SelectionChanged);
             // 
             // lvMonAnNV
@@ -316,6 +330,7 @@
             this.lvMonAnNV.Size = new System.Drawing.Size(952, 302);
             this.lvMonAnNV.TabIndex = 0;
             this.lvMonAnNV.UseCompatibleStateImageBehavior = false;
+            this.lvMonAnNV.SelectedIndexChanged += new System.EventHandler(this.lvMonAnNV_SelectedIndexChanged);
             // 
             // pnlDanhMucNV
             // 
@@ -328,6 +343,57 @@
             this.pnlDanhMucNV.Name = "pnlDanhMucNV";
             this.pnlDanhMucNV.Size = new System.Drawing.Size(951, 88);
             this.pnlDanhMucNV.TabIndex = 1;
+            this.pnlDanhMucNV.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlDanhMucNV_Paint);
+            // 
+            // btnTatCa
+            // 
+            this.btnTatCa.Location = new System.Drawing.Point(3, 3);
+            this.btnTatCa.Name = "btnTatCa";
+            this.btnTatCa.Size = new System.Drawing.Size(149, 67);
+            this.btnTatCa.TabIndex = 5;
+            this.btnTatCa.Text = "Tat Ca";
+            this.btnTatCa.UseVisualStyleBackColor = true;
+            this.btnTatCa.Click += new System.EventHandler(this.btnTatCa_Click);
+            // 
+            // btnMonCom
+            // 
+            this.btnMonCom.Location = new System.Drawing.Point(158, 3);
+            this.btnMonCom.Name = "btnMonCom";
+            this.btnMonCom.Size = new System.Drawing.Size(149, 67);
+            this.btnMonCom.TabIndex = 6;
+            this.btnMonCom.Text = "Mon Com";
+            this.btnMonCom.UseVisualStyleBackColor = true;
+            this.btnMonCom.Click += new System.EventHandler(this.btnMonCom_Click);
+            // 
+            // btnMonCanh
+            // 
+            this.btnMonCanh.Location = new System.Drawing.Point(313, 3);
+            this.btnMonCanh.Name = "btnMonCanh";
+            this.btnMonCanh.Size = new System.Drawing.Size(149, 67);
+            this.btnMonCanh.TabIndex = 7;
+            this.btnMonCanh.Text = "Mon Canh";
+            this.btnMonCanh.UseVisualStyleBackColor = true;
+            this.btnMonCanh.Click += new System.EventHandler(this.btnMonCanh_Click);
+            // 
+            // btnMonThem
+            // 
+            this.btnMonThem.Location = new System.Drawing.Point(468, 3);
+            this.btnMonThem.Name = "btnMonThem";
+            this.btnMonThem.Size = new System.Drawing.Size(149, 67);
+            this.btnMonThem.TabIndex = 8;
+            this.btnMonThem.Text = "Mon Them";
+            this.btnMonThem.UseVisualStyleBackColor = true;
+            this.btnMonThem.Click += new System.EventHandler(this.btnMonThem_Click);
+            // 
+            // btnGiaiKhat
+            // 
+            this.btnGiaiKhat.Location = new System.Drawing.Point(623, 3);
+            this.btnGiaiKhat.Name = "btnGiaiKhat";
+            this.btnGiaiKhat.Size = new System.Drawing.Size(149, 67);
+            this.btnGiaiKhat.TabIndex = 9;
+            this.btnGiaiKhat.Text = "Giai Khat";
+            this.btnGiaiKhat.UseVisualStyleBackColor = true;
+            this.btnGiaiKhat.Click += new System.EventHandler(this.btnGiaiKhat_Click);
             // 
             // tabThucDon
             // 
@@ -340,6 +406,7 @@
             this.tabThucDon.TabIndex = 0;
             this.tabThucDon.Text = "Thuc Don";
             this.tabThucDon.UseVisualStyleBackColor = true;
+            this.tabThucDon.Click += new System.EventHandler(this.tabThucDon_Click);
             // 
             // tabMain
             // 
@@ -352,51 +419,7 @@
             this.tabMain.SelectedIndex = 0;
             this.tabMain.Size = new System.Drawing.Size(972, 438);
             this.tabMain.TabIndex = 2;
-            // 
-            // btnTatCa
-            // 
-            this.btnTatCa.Location = new System.Drawing.Point(3, 3);
-            this.btnTatCa.Name = "btnTatCa";
-            this.btnTatCa.Size = new System.Drawing.Size(149, 67);
-            this.btnTatCa.TabIndex = 5;
-            this.btnTatCa.Text = "Tat Ca";
-            this.btnTatCa.UseVisualStyleBackColor = true;
-            // 
-            // btnMonCom
-            // 
-            this.btnMonCom.Location = new System.Drawing.Point(158, 3);
-            this.btnMonCom.Name = "btnMonCom";
-            this.btnMonCom.Size = new System.Drawing.Size(149, 67);
-            this.btnMonCom.TabIndex = 6;
-            this.btnMonCom.Text = "Mon Com";
-            this.btnMonCom.UseVisualStyleBackColor = true;
-            // 
-            // btnMonCanh
-            // 
-            this.btnMonCanh.Location = new System.Drawing.Point(313, 3);
-            this.btnMonCanh.Name = "btnMonCanh";
-            this.btnMonCanh.Size = new System.Drawing.Size(149, 67);
-            this.btnMonCanh.TabIndex = 7;
-            this.btnMonCanh.Text = "Mon Canh";
-            this.btnMonCanh.UseVisualStyleBackColor = true;
-            // 
-            // btnMonThem
-            // 
-            this.btnMonThem.Location = new System.Drawing.Point(468, 3);
-            this.btnMonThem.Name = "btnMonThem";
-            this.btnMonThem.Size = new System.Drawing.Size(149, 67);
-            this.btnMonThem.TabIndex = 8;
-            this.btnMonThem.Text = "Mon Them";
-            this.btnMonThem.UseVisualStyleBackColor = true;
-            // 
-            // btnGiaiKhat
-            // 
-            this.btnGiaiKhat.Location = new System.Drawing.Point(623, 3);
-            this.btnGiaiKhat.Name = "btnGiaiKhat";
-            this.btnGiaiKhat.Size = new System.Drawing.Size(149, 67);
-            this.btnGiaiKhat.TabIndex = 9;
-            this.btnGiaiKhat.Text = "Giai Khat";
-            this.btnGiaiKhat.UseVisualStyleBackColor = true;
+            this.tabMain.SelectedIndexChanged += new System.EventHandler(this.tabMain_SelectedIndexChanged);
             // 
             // frmNhanVienMain
             // 

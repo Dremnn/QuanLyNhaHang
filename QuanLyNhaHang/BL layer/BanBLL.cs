@@ -22,5 +22,32 @@ namespace QuanLyNhaHang.BL_layer
         {
             return banDAO.updateTrangThai(banId, trangThai);
         }
+
+        public bool insert(Ban ban)
+        {
+            if (string.IsNullOrEmpty(ban.SoBan))
+                return false;
+
+            if (ban.SoCho <= 0)
+                return false;
+
+            return banDAO.insert(ban) > 0;
+        }
+
+        public bool update(Ban ban)
+        {
+            if (string.IsNullOrEmpty(ban.SoBan))
+                return false;
+
+            if (ban.SoCho <= 0)
+                return false;
+
+            return banDAO.update(ban);
+        }
+
+        public bool delete(int id)
+        {
+            return banDAO.delete(id);
+        }
     }
 }

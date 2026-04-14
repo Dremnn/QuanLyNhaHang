@@ -13,5 +13,26 @@ namespace QuanLyNhaHang.BL_layer
         {
             return danhMucDAO.getAll();
         }
+
+        public bool insert(DanhMuc danhMuc)
+        {
+            if (string.IsNullOrEmpty(danhMuc.TenDanhMuc))
+                return false;
+
+            return danhMucDAO.insert(danhMuc) > 0;
+        }
+
+        public bool update(DanhMuc danhMuc)
+        {
+            if (string.IsNullOrEmpty(danhMuc.TenDanhMuc))
+                return false;
+
+            return danhMucDAO.update(danhMuc);
+        }
+
+        public bool delete(int id)
+        {
+            return danhMucDAO.delete(id);
+        }
     }
 }

@@ -100,5 +100,45 @@ namespace QuanLyNhaHang.DB_layer
                 TenMon = reader["TenMon"].ToString()
             };
         }
+
+        public List<MonAnBanChay> getMonBanChay(DateTime tuNgay, DateTime denNgay)
+        {
+            List<MonAnBanChay> list = new List<MonAnBanChay>();
+
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = @"SELECT m.Id AS MonAnId, m.TenMon,
+                              SUM(ct.SoLuong)              AS TongSoLuong,
+                              SUM(ct.SoLuong * ct.DonGia)  AS TongDoanhThu
+                       FROM ChiTietDon ct
+                       JOIN MonAn m ON m.Id = ct.MonAnId
+                       JOIN DonHang dh ON dh.Id = ct.DonHangId
+                       WHERE dh.TrangThai = 'DaThanhToan'
+                       AND CAST(dh.NgayTao AS DATE)
+                           BETWEEN @tuNgay AND @denNgay
+                       GROUP BY m.Id, m.TenMon
+                       ORDER BY TongSoLuong DESC";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@tuNgay", tuNgay.Date);
+                cmd.Parameters.AddWithValue("@denNgay", denNgay.Date);
+
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new MonAnBanChay
+                    {
+                        MonAnId = Convert.ToInt32(reader["MonAnId"]),
+                        TenMon = reader["TenMon"].ToString(),
+                        TongSoLuong = Convert.ToInt32(reader["TongSoLuong"]),
+                        TongDoanhThu = Convert.ToDecimal(reader["TongDoanhThu"])
+                    });
+                }
+            }
+
+            return list;
+        }
     }
 }

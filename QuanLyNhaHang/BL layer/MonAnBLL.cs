@@ -18,5 +18,37 @@ namespace QuanLyNhaHang.BL_layer
         {
             return monAnDAO.getByDanhMuc(danhMucId);
         }
+
+        public bool insert(MonAn monAn)
+        {
+            if (string.IsNullOrEmpty(monAn.TenMon))
+                return false;
+
+            if (monAn.GiaBan <= 0)
+                return false;
+
+            return monAnDAO.insert(monAn) > 0;
+        }
+
+        public bool update(MonAn monAn)
+        {
+            if (string.IsNullOrEmpty(monAn.TenMon))
+                return false;
+
+            if (monAn.GiaBan <= 0)
+                return false;
+
+            return monAnDAO.update(monAn);
+        }
+
+        public bool delete(int id)
+        {
+            return monAnDAO.delete(id);
+        }
+
+        public bool updateConHang(int id, bool conHang)
+        {
+            return monAnDAO.updateConHang(id, conHang);
+        }
     }
 }

@@ -553,5 +553,120 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
             if (result == DialogResult.Yes)
                 this.Close();
         }
+
+        private void pnlHeader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tabThanhToan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblNhanVien_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMaDon_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtGhiChu_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboPhuongThuc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTienThanhToan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTongTien_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvDonHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabDonHang_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvChiTiet_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabBan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboTrangThaiBan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvBan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lvMonAnNV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlDanhMucNV_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnTatCa_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMonCom_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMonCanh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMonThem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGiaiKhat_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabThucDon_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

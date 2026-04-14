@@ -77,5 +77,56 @@ namespace QuanLyNhaHang.DB_layer
                 trangThai: (TrangThaiBan)Enum.Parse(typeof(TrangThaiBan), reader["TrangThai"].ToString())
             );
         }
+
+        public int insert(Ban ban)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = @"INSERT INTO Ban (SoBan, SoCho, TrangThai)
+                       VALUES (@soBan, @soCho, @trangThai);
+                       SELECT SCOPE_IDENTITY();";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@soBan", ban.SoBan);
+                cmd.Parameters.AddWithValue("@soCho", ban.SoCho);
+                cmd.Parameters.AddWithValue("@trangThai", ban.TrangThai.ToString());
+
+                conn.Open();
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        public bool update(Ban ban)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = @"UPDATE Ban
+                       SET SoBan     = @soBan,
+                           SoCho     = @soCho
+                       WHERE Id = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@soBan", ban.SoBan);
+                cmd.Parameters.AddWithValue("@soCho", ban.SoCho);
+                cmd.Parameters.AddWithValue("@id", ban.Id);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        public bool delete(int id)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = "DELETE FROM Ban WHERE Id = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
     }
 }

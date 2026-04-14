@@ -86,5 +86,56 @@ namespace QuanLyNhaHang.DB_layer
                 ngayTao: Convert.ToDateTime(reader["NgayTao"])
             );
         }
+
+        public List<NguoiDung> getAll()
+        {
+            List<NguoiDung> list = new List<NguoiDung>();
+
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = @"SELECT Id, TenDangNhap, MatKhau, VaiTro, HoatDong, NgayTao
+                       FROM NguoiDung
+                       ORDER BY VaiTro, TenDangNhap";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                    list.Add(mapToNguoiDung(reader));
+            }
+
+            return list;
+        }
+
+        public bool updateHoatDong(int id, bool hoatDong)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = "UPDATE NguoiDung SET HoatDong = @hoatDong WHERE Id = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@hoatDong", hoatDong);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        public bool updateVaiTro(int id, string vaiTro)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = "UPDATE NguoiDung SET VaiTro = @vaiTro WHERE Id = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@vaiTro", vaiTro);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
     }
 }

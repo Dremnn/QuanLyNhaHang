@@ -33,5 +33,55 @@ namespace QuanLyNhaHang.DB_layer
 
             return list;
         }
+
+        public int insert(DanhMuc danhMuc)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = @"INSERT INTO DanhMuc (TenDanhMuc, ThuTu)
+                       VALUES (@tenDanhMuc, @thuTu);
+                       SELECT SCOPE_IDENTITY();";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@tenDanhMuc", danhMuc.TenDanhMuc);
+                cmd.Parameters.AddWithValue("@thuTu", danhMuc.ThuTu);
+
+                conn.Open();
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        public bool update(DanhMuc danhMuc)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = @"UPDATE DanhMuc
+                       SET TenDanhMuc = @tenDanhMuc,
+                           ThuTu      = @thuTu
+                       WHERE Id = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@tenDanhMuc", danhMuc.TenDanhMuc);
+                cmd.Parameters.AddWithValue("@thuTu", danhMuc.ThuTu);
+                cmd.Parameters.AddWithValue("@id", danhMuc.Id);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        public bool delete(int id)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = "DELETE FROM DanhMuc WHERE Id = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
     }
 }

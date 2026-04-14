@@ -72,5 +72,82 @@ namespace QuanLyNhaHang.DB_layer
                 TenDanhMuc = reader["TenDanhMuc"].ToString()
             };
         }
+
+        public int insert(MonAn monAn)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = @"INSERT INTO MonAn (DanhMucId, TenMon, MoTa, GiaBan, ConHang, AnhUrl)
+                       VALUES (@danhMucId, @tenMon, @moTa, @giaBan, @conHang, @anhUrl);
+                       SELECT SCOPE_IDENTITY();";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@danhMucId", monAn.DanhMucId);
+                cmd.Parameters.AddWithValue("@tenMon", monAn.TenMon);
+                cmd.Parameters.AddWithValue("@moTa", (object)monAn.MoTa ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@giaBan", monAn.GiaBan);
+                cmd.Parameters.AddWithValue("@conHang", monAn.ConHang);
+                cmd.Parameters.AddWithValue("@anhUrl", (object)monAn.AnhUrl ?? DBNull.Value);
+
+                conn.Open();
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        public bool update(MonAn monAn)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = @"UPDATE MonAn
+                       SET DanhMucId = @danhMucId,
+                           TenMon    = @tenMon,
+                           MoTa      = @moTa,
+                           GiaBan    = @giaBan,
+                           ConHang   = @conHang,
+                           AnhUrl    = @anhUrl
+                       WHERE Id = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@danhMucId", monAn.DanhMucId);
+                cmd.Parameters.AddWithValue("@tenMon", monAn.TenMon);
+                cmd.Parameters.AddWithValue("@moTa", (object)monAn.MoTa ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@giaBan", monAn.GiaBan);
+                cmd.Parameters.AddWithValue("@conHang", monAn.ConHang);
+                cmd.Parameters.AddWithValue("@anhUrl", (object)monAn.AnhUrl ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@id", monAn.Id);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        public bool delete(int id)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = "DELETE FROM MonAn WHERE Id = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        public bool updateConHang(int id, bool conHang)
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            {
+                string sql = "UPDATE MonAn SET ConHang = @conHang WHERE Id = @id";
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@conHang", conHang);
+                cmd.Parameters.AddWithValue("@id", id);
+
+                conn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
     }
 }
