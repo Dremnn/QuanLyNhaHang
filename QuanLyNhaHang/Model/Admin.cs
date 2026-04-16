@@ -13,7 +13,7 @@ namespace QuanLyNhaHang.Model
             VaiTro = VaiTro.Admin;
         }
 
-        public Admin(int id, string tenDangNhap, string matKhau, bool hoatDong, DateTime ngayTao)
-            : base(id, tenDangNhap, matKhau, VaiTro.Admin, hoatDong, ngayTao) { }
+        public Admin(int id, string tenDangNhap, string matKhau, bool hoatDong, DateTime ngayTao, string hinhAnh)
+            : base(id, tenDangNhap, matKhau, VaiTro.Admin, hoatDong, ngayTao, hinhAnh) { }
     }
 }

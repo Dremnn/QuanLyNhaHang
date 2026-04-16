@@ -21,10 +21,12 @@ namespace QuanLyNhaHang.Model
         public VaiTro VaiTro { get; set; }
         public bool HoatDong { get; set; } = true;
         public DateTime NgayTao { get; set; } = DateTime.Now;
+        public string HinhAnh { get; set; }
 
         public NguoiDung() { }
 
-        public NguoiDung(int id, string tenDangNhap, string matKhau, VaiTro vaiTro, bool hoatDong, DateTime ngayTao)
+
+        public NguoiDung(int id, string tenDangNhap, string matKhau, VaiTro vaiTro, bool hoatDong, DateTime ngayTao, string hinhAnh)
         {
             Id = id;
             TenDangNhap = tenDangNhap;
@@ -32,6 +34,7 @@ namespace QuanLyNhaHang.Model
             VaiTro = vaiTro;
             HoatDong = hoatDong;
             NgayTao = ngayTao;
+            HinhAnh = hinhAnh;
         }
 
         public override string ToString() => $"[{VaiTro}] {TenDangNhap}";

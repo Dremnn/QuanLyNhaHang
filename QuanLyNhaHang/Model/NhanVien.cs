@@ -13,7 +13,7 @@ namespace QuanLyNhaHang.Model
             VaiTro = VaiTro.NhanVien;
         }
 
-        public NhanVien(int id, string tenDangNhap, string matKhau, bool hoatDong, DateTime ngayTao)
-            : base(id, tenDangNhap, matKhau, VaiTro.NhanVien, hoatDong, ngayTao) { }
+        public NhanVien(int id, string tenDangNhap, string matKhau, bool hoatDong, DateTime ngayTao, string hinhAnh)
+            : base(id, tenDangNhap, matKhau, VaiTro.NhanVien, hoatDong, ngayTao, hinhAnh) { }
     }
 }

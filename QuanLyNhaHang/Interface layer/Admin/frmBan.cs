@@ -1,5 +1,6 @@
 ﻿using QuanLyNhaHang.Model;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace QuanLyNhaHang.Interface_layer.Admin
@@ -58,5 +59,18 @@ namespace QuanLyNhaHang.Interface_layer.Admin
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+        private void txtSoBan_Click(object sender, EventArgs e)
+        {
+            txtSoBan.PlaceholderText = "";
+        }
+
+        private void txtSoBan_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtSoBan.Text))
+            {
+                txtSoBan.PlaceholderText = "Nhập tên bàn";
+            }
+        }
+
     }
 }

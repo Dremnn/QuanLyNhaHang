@@ -226,5 +226,8 @@
   <ItemGroup>
     <Folder Include="Images\MonAn\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\default_user.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,9 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using QuanLyNhaHang.BL_layer;
+﻿using QuanLyNhaHang.BL_layer;
+using DBConnection = QuanLyNhaHang.DB_layer.DBConnection;
 using QuanLyNhaHang.Helpers;
 using QuanLyNhaHang.Model;
+using System;
+using System.Data;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.IO;
+using System.Windows.Forms;
 
 namespace QuanLyNhaHang.Interface_layer.Admin
 {
@@ -25,13 +31,21 @@ namespace QuanLyNhaHang.Interface_layer.Admin
         // ==========================================
         private void frmAdminMain_Load(object sender, EventArgs e)
         {
-            lblAdmin.Text = $"Admin: {SessionHelper.CurrentUser.TenDangNhap}";
+            lblAdmin.Text   = $"Tên    : {SessionHelper.CurrentUser.TenDangNhap}";
+            lblVaiTro.Text  = $"Vai trò: {SessionHelper.CurrentUser.VaiTro}";
+            lblID.Text      = $"ID     : {SessionHelper.CurrentUser.Id}";
 
             cboVaiTro.Items.Clear();
             cboVaiTro.Items.Add("Admin");
             cboVaiTro.Items.Add("NhanVien");
             cboVaiTro.Items.Add("KhachHang");
             cboVaiTro.SelectedIndex = 0;
+
+            // ✅ Luôn gọi LoadAvatar (hàm tự xử lý nếu HinhAnh rỗng)
+            LoadAvatar(
+                SessionHelper.CurrentUser.VaiTro.ToString(),
+                SessionHelper.CurrentUser.HinhAnh
+            );
 
             dtpTuNgay.Value = DateTime.Today.AddDays(-30);
             dtpDenNgay.Value = DateTime.Today;
@@ -262,9 +276,6 @@ namespace QuanLyNhaHang.Interface_layer.Admin
             }
         }
 
-        // ==========================================
-        // TAB DANH MỤC
-        // ==========================================
         private void loadDanhMuc()
         {
             dgvDanhMuc.DataSource = null;
@@ -350,10 +361,6 @@ namespace QuanLyNhaHang.Interface_layer.Admin
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        // ==========================================
-        // TAB BÀN
-        // ==========================================
         private void loadBan()
         {
             dgvBanAdmin.DataSource = null;
@@ -440,10 +447,6 @@ namespace QuanLyNhaHang.Interface_layer.Admin
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        // ==========================================
-        // TAB BÁO CÁO
-        // ==========================================
         private void btnXemBaoCao_Click(object sender, EventArgs e)
         {
             DateTime tuNgay = dtpTuNgay.Value.Date;
@@ -524,9 +527,6 @@ namespace QuanLyNhaHang.Interface_layer.Admin
             dgvMonBanChay.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        // ==========================================
-        // ĐĂNG XUẤT
-        // ==========================================
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -535,6 +535,110 @@ namespace QuanLyNhaHang.Interface_layer.Admin
 
             if (result == DialogResult.Yes)
                 this.Close();
+        }
+        private void pBAVT_Paint(object sender, PaintEventArgs e)
+        {
+            using (GraphicsPath gp = new GraphicsPath())
+            {
+                gp.AddEllipse(0, 0, pBAVT.Width - 1, pBAVT.Height - 1);
+                pBAVT.Region = new Region(gp);
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                Pen pen = new Pen(Color.LightGray, 2);
+                e.Graphics.DrawEllipse(pen, 0, 0, pBAVT.Width - 1, pBAVT.Height - 1);
+            }
+        }
+        private void pBAVT_Click(object sender, EventArgs e)
+        {
+            if (ofdAvatar.ShowDialog() == DialogResult.OK)
+            {
+                string userRole = SessionHelper.CurrentUser.VaiTro.ToString();
+                string userID = SessionHelper.CurrentUser.Id.ToString();
+
+                // Thư mục lưu ảnh: bin/Debug/Avatars/[Role]/
+                string folderPath = Path.Combine(Application.StartupPath, "Avatars", userRole);
+                if (!Directory.Exists(folderPath))
+                    Directory.CreateDirectory(folderPath);
+
+                // Tên file: [ID].[đuôi gốc], VD: "1.jpg"
+                string extension = Path.GetExtension(ofdAvatar.FileName);
+                string fileName = userID + extension;
+                string destPath = Path.Combine(folderPath, fileName);
+
+                // Copy file vào thư mục Avatars
+                File.Copy(ofdAvatar.FileName, destPath, true);
+
+                // Hiển thị ngay lên panel (dùng FileStream để không lock file)
+                using (FileStream fs = new FileStream(destPath, FileMode.Open, FileAccess.Read))
+                {
+                    pBAVT.Image = Image.FromStream(fs);
+                }
+
+                // ✅ Lưu đường dẫn tương đối gồm cả Role/FileName vào DB
+                // VD: "Admin/1.jpg" — để LoadAvatar tìm lại chính xác
+                string relativePath = userRole + "/" + fileName;
+                SaveToDatabase(userID, relativePath);
+            }
+        }
+        private void SaveToDatabase(string userID, string relativePath)
+        {
+            try
+            {
+                string role = SessionHelper.CurrentUser.VaiTro.ToString();
+                string tableName = (role == "KhachHang") ? "KhachHang" : "NguoiDung";
+
+                string sql = $"UPDATE {tableName} SET HinhAnh = @hinh WHERE Id = @id";
+
+                using (SqlConnection conn = DBConnection.GetConnection())  // dùng class chung
+                {
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@hinh", relativePath);
+                    cmd.Parameters.AddWithValue("@id", userID);
+
+                    conn.Open();
+                    int result = cmd.ExecuteNonQuery();
+                    if (result > 0)
+                    {
+                        SessionHelper.CurrentUser.HinhAnh = relativePath;
+                        MessageBox.Show("Đã cập nhật ảnh đại diện!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi Database: " + ex.Message);
+            }
+        }
+        private void LoadAvatar(string userRole, string fileNameFromDb)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(fileNameFromDb))
+                {
+                    pBAVT.Image = Properties.Resources.default_user;
+                    return;
+                }
+                else
+                {
+                    string fullPath = Path.Combine(Application.StartupPath, "Avatars", "Admin/1.jpg");
+
+                    if (!File.Exists(fullPath))
+                        fullPath = Path.Combine(Application.StartupPath, "Avatars", userRole, "Admin/1.jpg");
+                    if (File.Exists(fullPath))
+                    {
+                        using (FileStream fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
+                        {
+                            pBAVT.Image = Image.FromStream(fs);
+                        }
+                    }
+                    else
+                    {
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải ảnh: " + ex.Message);
+            }
         }
     }
 }

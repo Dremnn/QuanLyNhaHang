@@ -15,6 +15,7 @@ namespace QuanLyNhaHang.Model
         public string Email { get; set; }
         public string DiaChi { get; set; }
         public DateTime NgayTaoKH { get; set; } = DateTime.Now;
+        public string HinhAnh { get; set; }
 
         public bool LaVangLai => NguoiDungId == null;
 
@@ -25,13 +26,14 @@ namespace QuanLyNhaHang.Model
             SoDienThoai = soDienThoai;
             NguoiDungId = null;
             VaiTro = VaiTro.KhachHang;
+            HinhAnh = null;  // Khách hàng vãng lai không có hình ảnh
         }
 
         // Constructor khách đã đăng ký
         public KhachHang(int id, string tenDangNhap, string matKhau, bool hoatDong, DateTime ngayTao,
                          int khachHangId, int? nguoiDungId, string hoTen, string soDienThoai,
-                         string email, string diaChi, DateTime ngayTaoKH)
-            : base(id, tenDangNhap, matKhau, VaiTro.KhachHang, hoatDong, ngayTao)
+                         string email, string diaChi, DateTime ngayTaoKH,  string hinhAnh)
+            : base(id, tenDangNhap, matKhau, VaiTro.KhachHang, hoatDong, ngayTao, hinhAnh)
         {
             KhachHangId = khachHangId;
             NguoiDungId = nguoiDungId;
@@ -40,6 +42,7 @@ namespace QuanLyNhaHang.Model
             Email = email;
             DiaChi = diaChi;
             NgayTaoKH = ngayTaoKH;
+            HinhAnh = null;
         }
     }
 }

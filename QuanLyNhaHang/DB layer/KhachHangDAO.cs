@@ -10,14 +10,15 @@ namespace QuanLyNhaHang.DB_layer
         {
             using (SqlConnection conn = DBConnection.GetConnection())
             {
-                string sql = @"INSERT INTO KhachHang (NguoiDungId, HoTen, SoDienThoai)
-                               VALUES (@nguoiDungId, @hoTen, @soDienThoai);
+                string sql = @"INSERT INTO KhachHang (NguoiDungId, HoTen, SoDienThoai,HinhAnh)
+                               VALUES (@nguoiDungId, @hoTen, @soDienThoai, @hinhAnh);
                                SELECT SCOPE_IDENTITY();";
 
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@nguoiDungId", khachHang.NguoiDungId);
                 cmd.Parameters.AddWithValue("@hoTen", khachHang.HoTen);
                 cmd.Parameters.AddWithValue("@soDienThoai", khachHang.SoDienThoai);
+                cmd.Parameters.AddWithValue("@hinhAnh", (object)khachHang.HinhAnh ?? DBNull.Value);
 
                 conn.Open();
                 return Convert.ToInt32(cmd.ExecuteScalar());
@@ -28,7 +29,7 @@ namespace QuanLyNhaHang.DB_layer
         {
             using (SqlConnection conn = DBConnection.GetConnection())
             {
-                string sql = @"SELECT Id, NguoiDungId, HoTen, SoDienThoai, Email, DiaChi, NgayTao
+                string sql = @"SELECT Id, NguoiDungId, HoTen, SoDienThoai, Email, DiaChi, NgayTao, HinhAnh
                                FROM KhachHang
                                WHERE NguoiDungId = @nguoiDungId";
 
@@ -52,12 +53,14 @@ namespace QuanLyNhaHang.DB_layer
                                SET HoTen        = @hoTen,
                                    SoDienThoai  = @soDienThoai,
                                    Email        = @email,
-                                   DiaChi       = @diaChi
+                                   DiaChi       = @diaChi,
+                                   HinhAnh      = @hinhAnh
                                WHERE Id = @id";
 
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@hoTen", khachHang.HoTen);
                 cmd.Parameters.AddWithValue("@soDienThoai", khachHang.SoDienThoai);
+                cmd.Parameters.AddWithValue("@hinhAnh", (object)khachHang.HinhAnh ?? DBNull.Value); 
                 cmd.Parameters.AddWithValue("@email", (object)khachHang.Email ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@diaChi", (object)khachHang.DiaChi ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@id", khachHang.KhachHangId);
@@ -86,7 +89,7 @@ namespace QuanLyNhaHang.DB_layer
         {
             using (SqlConnection conn = DBConnection.GetConnection())
             {
-                string sql = @"SELECT Id, NguoiDungId, HoTen, SoDienThoai, Email, DiaChi, NgayTao
+                string sql = @"SELECT Id, NguoiDungId, HoTen, SoDienThoai, Email, DiaChi, NgayTao, HinhAnh
                        FROM KhachHang
                        WHERE SoDienThoai = @soDienThoai";
 

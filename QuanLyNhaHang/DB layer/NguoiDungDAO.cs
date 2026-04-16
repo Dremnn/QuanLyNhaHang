@@ -18,7 +18,7 @@ namespace QuanLyNhaHang.DB_layer
 
             using (SqlConnection conn = DBConnection.GetConnection())
             {
-                string sql = @"SELECT Id, TenDangNhap, MatKhau, VaiTro, HoatDong, NgayTao
+                string sql = @"SELECT Id, TenDangNhap, MatKhau, VaiTro, HoatDong, NgayTao, HinhAnh
                                FROM NguoiDung
                                WHERE TenDangNhap = @tenDangNhap";
 
@@ -83,7 +83,8 @@ namespace QuanLyNhaHang.DB_layer
                 matKhau: reader["MatKhau"].ToString(),
                 vaiTro: vaiTro,
                 hoatDong: Convert.ToBoolean(reader["HoatDong"]),
-                ngayTao: Convert.ToDateTime(reader["NgayTao"])
+                ngayTao: Convert.ToDateTime(reader["NgayTao"]),
+                hinhAnh: reader["HinhAnh"] == DBNull.Value ? null : reader["HinhAnh"].ToString()
             );
         }
 
@@ -93,7 +94,7 @@ namespace QuanLyNhaHang.DB_layer
 
             using (SqlConnection conn = DBConnection.GetConnection())
             {
-                string sql = @"SELECT Id, TenDangNhap, MatKhau, VaiTro, HoatDong, NgayTao
+                string sql = @"SELECT Id, TenDangNhap, MatKhau, VaiTro, HoatDong, NgayTao, HinhAnh
                        FROM NguoiDung
                        ORDER BY VaiTro, TenDangNhap";
 
