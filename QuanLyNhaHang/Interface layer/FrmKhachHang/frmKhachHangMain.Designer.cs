@@ -31,6 +31,11 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabThucDon = new System.Windows.Forms.TabPage();
             this.pnlDanhMuc = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnTatCa = new System.Windows.Forms.Button();
+            this.btnMonCom = new System.Windows.Forms.Button();
+            this.btnMonCanh = new System.Windows.Forms.Button();
+            this.btnMonThem = new System.Windows.Forms.Button();
+            this.btnGiaiKhat = new System.Windows.Forms.Button();
             this.lvMonAn = new System.Windows.Forms.ListView();
             this.tabDatBan = new System.Windows.Forms.TabPage();
             this.btnDatBan = new System.Windows.Forms.Button();
@@ -53,11 +58,6 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.lblChaoMung = new System.Windows.Forms.Label();
-            this.btnTatCa = new System.Windows.Forms.Button();
-            this.btnMonCom = new System.Windows.Forms.Button();
-            this.btnMonCanh = new System.Windows.Forms.Button();
-            this.btnMonThem = new System.Windows.Forms.Button();
-            this.btnGiaiKhat = new System.Windows.Forms.Button();
             this.tabMain.SuspendLayout();
             this.tabThucDon.SuspendLayout();
             this.pnlDanhMuc.SuspendLayout();
@@ -104,6 +104,51 @@
             this.pnlDanhMuc.Size = new System.Drawing.Size(951, 88);
             this.pnlDanhMuc.TabIndex = 1;
             // 
+            // btnTatCa
+            // 
+            this.btnTatCa.Location = new System.Drawing.Point(3, 3);
+            this.btnTatCa.Name = "btnTatCa";
+            this.btnTatCa.Size = new System.Drawing.Size(149, 67);
+            this.btnTatCa.TabIndex = 0;
+            this.btnTatCa.Text = "Tat Ca";
+            this.btnTatCa.UseVisualStyleBackColor = true;
+            // 
+            // btnMonCom
+            // 
+            this.btnMonCom.Location = new System.Drawing.Point(158, 3);
+            this.btnMonCom.Name = "btnMonCom";
+            this.btnMonCom.Size = new System.Drawing.Size(149, 67);
+            this.btnMonCom.TabIndex = 1;
+            this.btnMonCom.Text = "Mon Com";
+            this.btnMonCom.UseVisualStyleBackColor = true;
+            // 
+            // btnMonCanh
+            // 
+            this.btnMonCanh.Location = new System.Drawing.Point(313, 3);
+            this.btnMonCanh.Name = "btnMonCanh";
+            this.btnMonCanh.Size = new System.Drawing.Size(149, 67);
+            this.btnMonCanh.TabIndex = 2;
+            this.btnMonCanh.Text = "Mon Canh";
+            this.btnMonCanh.UseVisualStyleBackColor = true;
+            // 
+            // btnMonThem
+            // 
+            this.btnMonThem.Location = new System.Drawing.Point(468, 3);
+            this.btnMonThem.Name = "btnMonThem";
+            this.btnMonThem.Size = new System.Drawing.Size(149, 67);
+            this.btnMonThem.TabIndex = 3;
+            this.btnMonThem.Text = "Mon Them";
+            this.btnMonThem.UseVisualStyleBackColor = true;
+            // 
+            // btnGiaiKhat
+            // 
+            this.btnGiaiKhat.Location = new System.Drawing.Point(623, 3);
+            this.btnGiaiKhat.Name = "btnGiaiKhat";
+            this.btnGiaiKhat.Size = new System.Drawing.Size(149, 67);
+            this.btnGiaiKhat.TabIndex = 4;
+            this.btnGiaiKhat.Text = "Giai Khat";
+            this.btnGiaiKhat.UseVisualStyleBackColor = true;
+            // 
             // lvMonAn
             // 
             this.lvMonAn.HideSelection = false;
@@ -122,7 +167,7 @@
             this.tabDatBan.Location = new System.Drawing.Point(4, 25);
             this.tabDatBan.Name = "tabDatBan";
             this.tabDatBan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDatBan.Size = new System.Drawing.Size(964, 409);
+            this.tabDatBan.Size = new System.Drawing.Size(964, 403);
             this.tabDatBan.TabIndex = 3;
             this.tabDatBan.Text = "Dat Ban";
             this.tabDatBan.UseVisualStyleBackColor = true;
@@ -317,51 +362,6 @@
             this.lblChaoMung.Size = new System.Drawing.Size(116, 16);
             this.lblChaoMung.TabIndex = 0;
             this.lblChaoMung.Text = "Chao Mung , [Ten]";
-            // 
-            // btnTatCa
-            // 
-            this.btnTatCa.Location = new System.Drawing.Point(3, 3);
-            this.btnTatCa.Name = "btnTatCa";
-            this.btnTatCa.Size = new System.Drawing.Size(149, 67);
-            this.btnTatCa.TabIndex = 0;
-            this.btnTatCa.Text = "Tat Ca";
-            this.btnTatCa.UseVisualStyleBackColor = true;
-            // 
-            // btnMonCom
-            // 
-            this.btnMonCom.Location = new System.Drawing.Point(158, 3);
-            this.btnMonCom.Name = "btnMonCom";
-            this.btnMonCom.Size = new System.Drawing.Size(149, 67);
-            this.btnMonCom.TabIndex = 1;
-            this.btnMonCom.Text = "Mon Com";
-            this.btnMonCom.UseVisualStyleBackColor = true;
-            // 
-            // btnMonCanh
-            // 
-            this.btnMonCanh.Location = new System.Drawing.Point(313, 3);
-            this.btnMonCanh.Name = "btnMonCanh";
-            this.btnMonCanh.Size = new System.Drawing.Size(149, 67);
-            this.btnMonCanh.TabIndex = 2;
-            this.btnMonCanh.Text = "Mon Canh";
-            this.btnMonCanh.UseVisualStyleBackColor = true;
-            // 
-            // btnMonThem
-            // 
-            this.btnMonThem.Location = new System.Drawing.Point(468, 3);
-            this.btnMonThem.Name = "btnMonThem";
-            this.btnMonThem.Size = new System.Drawing.Size(149, 67);
-            this.btnMonThem.TabIndex = 3;
-            this.btnMonThem.Text = "Mon Them";
-            this.btnMonThem.UseVisualStyleBackColor = true;
-            // 
-            // btnGiaiKhat
-            // 
-            this.btnGiaiKhat.Location = new System.Drawing.Point(623, 3);
-            this.btnGiaiKhat.Name = "btnGiaiKhat";
-            this.btnGiaiKhat.Size = new System.Drawing.Size(149, 67);
-            this.btnGiaiKhat.TabIndex = 4;
-            this.btnGiaiKhat.Text = "Giai Khat";
-            this.btnGiaiKhat.UseVisualStyleBackColor = true;
             // 
             // frmKhachHangMain
             // 

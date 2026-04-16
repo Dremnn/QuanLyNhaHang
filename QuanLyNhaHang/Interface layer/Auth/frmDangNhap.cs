@@ -50,12 +50,12 @@ namespace QuanLyNhaHang.Interface_layer.Auth
                 return;
             }
 
-            // Lưu session
+            // 1. Lưu thông tin vào SessionHelper
             SessionHelper.login(nguoiDung);
 
-            // Mở form tương ứng theo vai trò
-            this.Hide();
-            openFormByVaiTro(nguoiDung.VaiTro);
+            // 2. Báo cho form gọi nó (Trang Chủ) biết là đã thành công và ĐÓNG HẲN form đăng nhập
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void openFormByVaiTro(VaiTro vaiTro)

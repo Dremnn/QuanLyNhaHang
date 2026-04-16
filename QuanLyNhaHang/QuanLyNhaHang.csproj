@@ -147,6 +147,12 @@
     <Compile Include="Interface layer\FrmNhanVien\frmTimKhachHang.Designer.cs">
       <DependentUpon>frmTimKhachHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interface layer\frmTrangChu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface layer\frmTrangChu.Designer.cs">
+      <DependentUpon>frmTrangChu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Ban.cs" />
     <Compile Include="Model\ChiTietDon.cs" />
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interface layer\FrmNhanVien\frmTimKhachHang.resx">
       <DependentUpon>frmTimKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface layer\frmTrangChu.resx">
+      <DependentUpon>frmTrangChu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
