@@ -1,4 +1,5 @@
-﻿using QuanLyNhaHang.Interface_layer.Auth;
+﻿using QuanLyNhaHang.Interface_layer;
+using QuanLyNhaHang.Interface_layer.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace QuanLyNhaHang
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDangNhap());
+            Application.Run(new frmTrangChu());
         }
     }
 }
