@@ -51,6 +51,7 @@
             this.btnThemMon = new System.Windows.Forms.Button();
             this.dgvMonAn = new System.Windows.Forms.DataGridView();
             this.tabDanhMuc = new System.Windows.Forms.TabPage();
+            this.btnThemDanhMuc = new System.Windows.Forms.Button();
             this.btnXoaDanhMuc = new System.Windows.Forms.Button();
             this.btnSuaDanhMuc = new System.Windows.Forms.Button();
             this.dgvDanhMuc = new System.Windows.Forms.DataGridView();
@@ -61,11 +62,10 @@
             this.dgvBanAdmin = new System.Windows.Forms.DataGridView();
             this.lblAdmin = new System.Windows.Forms.Label();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.pBAVT = new System.Windows.Forms.PictureBox();
+            this.lblID = new System.Windows.Forms.Label();
             this.lblVaiTro = new System.Windows.Forms.Label();
             this.btnDangXuat = new System.Windows.Forms.Button();
-            this.btnThemDanhMuc = new System.Windows.Forms.Button();
-            this.lblID = new System.Windows.Forms.Label();
-            this.pBAVT = new System.Windows.Forms.PictureBox();
             this.ofdAvatar = new System.Windows.Forms.OpenFileDialog();
             this.tabMain.SuspendLayout();
             this.tabBaoCao.SuspendLayout();
@@ -334,6 +334,16 @@
             this.tabDanhMuc.Text = "Danh Mục";
             this.tabDanhMuc.UseVisualStyleBackColor = true;
             // 
+            // btnThemDanhMuc
+            // 
+            this.btnThemDanhMuc.Location = new System.Drawing.Point(741, 26);
+            this.btnThemDanhMuc.Name = "btnThemDanhMuc";
+            this.btnThemDanhMuc.Size = new System.Drawing.Size(181, 34);
+            this.btnThemDanhMuc.TabIndex = 5;
+            this.btnThemDanhMuc.Text = "Thêm danh mục";
+            this.btnThemDanhMuc.UseVisualStyleBackColor = true;
+            this.btnThemDanhMuc.Click += new System.EventHandler(this.btnThemDanhMuc_Click);
+            // 
             // btnXoaDanhMuc
             // 
             this.btnXoaDanhMuc.Location = new System.Drawing.Point(741, 170);
@@ -442,6 +452,26 @@
             this.pnlHeader.Size = new System.Drawing.Size(964, 89);
             this.pnlHeader.TabIndex = 5;
             // 
+            // pBAVT
+            // 
+            this.pBAVT.Location = new System.Drawing.Point(21, 4);
+            this.pBAVT.Name = "pBAVT";
+            this.pBAVT.Size = new System.Drawing.Size(80, 80);
+            this.pBAVT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pBAVT.TabIndex = 4;
+            this.pBAVT.TabStop = false;
+            this.pBAVT.Click += new System.EventHandler(this.pBAVT_Click);
+            this.pBAVT.Paint += new System.Windows.Forms.PaintEventHandler(this.pBAVT_Paint);
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(120, 66);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(98, 19);
+            this.lblID.TabIndex = 3;
+            this.lblID.Text = "ID         : [ID]";
+            // 
             // lblVaiTro
             // 
             this.lblVaiTro.AutoSize = true;
@@ -460,35 +490,6 @@
             this.btnDangXuat.Text = "Đăng xuất";
             this.btnDangXuat.UseVisualStyleBackColor = true;
             this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
-            // 
-            // btnThemDanhMuc
-            // 
-            this.btnThemDanhMuc.Location = new System.Drawing.Point(741, 26);
-            this.btnThemDanhMuc.Name = "btnThemDanhMuc";
-            this.btnThemDanhMuc.Size = new System.Drawing.Size(181, 34);
-            this.btnThemDanhMuc.TabIndex = 5;
-            this.btnThemDanhMuc.Text = "Thêm danh mục";
-            this.btnThemDanhMuc.UseVisualStyleBackColor = true;
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(120, 66);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(98, 19);
-            this.lblID.TabIndex = 3;
-            this.lblID.Text = "ID         : [ID]";
-            // 
-            // pBAVT
-            // 
-            this.pBAVT.Location = new System.Drawing.Point(21, 4);
-            this.pBAVT.Name = "pBAVT";
-            this.pBAVT.Size = new System.Drawing.Size(80, 80);
-            this.pBAVT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pBAVT.TabIndex = 4;
-            this.pBAVT.TabStop = false;
-            this.pBAVT.Click += new System.EventHandler(this.pBAVT_Click);
-            this.pBAVT.Paint += new System.Windows.Forms.PaintEventHandler(this.pBAVT_Paint);
             // 
             // ofdAvatar
             // 

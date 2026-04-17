@@ -39,9 +39,11 @@ namespace QuanLyNhaHang.Interface_layer.Admin
             cboVaiTro.Items.Add("Admin");
             cboVaiTro.Items.Add("NhanVien");
             cboVaiTro.Items.Add("KhachHang");
-            cboVaiTro.SelectedIndex = 0;
+            if (cboVaiTro.Items.Count > 0)
+            {
+                cboVaiTro.SelectedIndex = 0;
+            }
 
-            // ✅ Luôn gọi LoadAvatar (hàm tự xử lý nếu HinhAnh rỗng)
             LoadAvatar(
                 SessionHelper.CurrentUser.VaiTro.ToString(),
                 SessionHelper.CurrentUser.HinhAnh
@@ -553,28 +555,17 @@ namespace QuanLyNhaHang.Interface_layer.Admin
             {
                 string userRole = SessionHelper.CurrentUser.VaiTro.ToString();
                 string userID = SessionHelper.CurrentUser.Id.ToString();
-
-                // Thư mục lưu ảnh: bin/Debug/Avatars/[Role]/
                 string folderPath = Path.Combine(Application.StartupPath, "Avatars", userRole);
                 if (!Directory.Exists(folderPath))
                     Directory.CreateDirectory(folderPath);
-
-                // Tên file: [ID].[đuôi gốc], VD: "1.jpg"
                 string extension = Path.GetExtension(ofdAvatar.FileName);
                 string fileName = userID + extension;
                 string destPath = Path.Combine(folderPath, fileName);
-
-                // Copy file vào thư mục Avatars
                 File.Copy(ofdAvatar.FileName, destPath, true);
-
-                // Hiển thị ngay lên panel (dùng FileStream để không lock file)
                 using (FileStream fs = new FileStream(destPath, FileMode.Open, FileAccess.Read))
                 {
                     pBAVT.Image = Image.FromStream(fs);
                 }
-
-                // ✅ Lưu đường dẫn tương đối gồm cả Role/FileName vào DB
-                // VD: "Admin/1.jpg" — để LoadAvatar tìm lại chính xác
                 string relativePath = userRole + "/" + fileName;
                 SaveToDatabase(userID, relativePath);
             }
@@ -588,7 +579,7 @@ namespace QuanLyNhaHang.Interface_layer.Admin
 
                 string sql = $"UPDATE {tableName} SET HinhAnh = @hinh WHERE Id = @id";
 
-                using (SqlConnection conn = DBConnection.GetConnection())  // dùng class chung
+                using (SqlConnection conn = DBConnection.GetConnection())
                 {
                     SqlCommand cmd = new SqlCommand(sql, conn);
                     cmd.Parameters.AddWithValue("@hinh", relativePath);
@@ -617,22 +608,20 @@ namespace QuanLyNhaHang.Interface_layer.Admin
                     pBAVT.Image = Properties.Resources.default_user;
                     return;
                 }
+                string fullPath = Path.Combine(Application.StartupPath, "Avatars", fileNameFromDb);
+                if (!File.Exists(fullPath))
+                    fullPath = Path.Combine(Application.StartupPath, "Avatars", userRole, fileNameFromDb);
+
+                if (File.Exists(fullPath))
+                {
+                    using (FileStream fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
+                    {
+                        pBAVT.Image = Image.FromStream(fs);
+                    }
+                }
                 else
                 {
-                    string fullPath = Path.Combine(Application.StartupPath, "Avatars", "Admin/1.jpg");
-
-                    if (!File.Exists(fullPath))
-                        fullPath = Path.Combine(Application.StartupPath, "Avatars", userRole, "Admin/1.jpg");
-                    if (File.Exists(fullPath))
-                    {
-                        using (FileStream fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
-                        {
-                            pBAVT.Image = Image.FromStream(fs);
-                        }
-                    }
-                    else
-                    {
-                    }
+                    pBAVT.Image = Properties.Resources.default_user;
                 }
             }
             catch (Exception ex)

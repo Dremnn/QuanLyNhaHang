@@ -34,7 +34,9 @@
             this.btnHuy = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.siticoneHtmlLabel1 = new Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel();
             this.txtSoBan = new Siticone.Desktop.UI.WinForms.SiticoneTextBox();
+            this.plBan = new Siticone.Desktop.UI.WinForms.SiticonePanel();
             ((System.ComponentModel.ISupportInitialize)(this.nudSoCho)).BeginInit();
+            this.plBan.SuspendLayout();
             this.SuspendLayout();
             // 
             // nudSoCho
@@ -43,9 +45,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.nudSoCho.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.nudSoCho.Location = new System.Drawing.Point(148, 218);
+            this.nudSoCho.Location = new System.Drawing.Point(42, 164);
             this.nudSoCho.Name = "nudSoCho";
-            this.nudSoCho.Size = new System.Drawing.Size(171, 27);
+            this.nudSoCho.Size = new System.Drawing.Size(190, 27);
             this.nudSoCho.TabIndex = 1;
             // 
             // btnLuu
@@ -59,9 +61,9 @@
             this.btnLuu.FillColor = System.Drawing.Color.White;
             this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnLuu.ForeColor = System.Drawing.Color.Black;
-            this.btnLuu.Location = new System.Drawing.Point(148, 294);
+            this.btnLuu.Location = new System.Drawing.Point(42, 239);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(171, 36);
+            this.btnLuu.Size = new System.Drawing.Size(190, 36);
             this.btnLuu.TabIndex = 4;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
@@ -78,9 +80,9 @@
             this.btnHuy.FillColor = System.Drawing.Color.White;
             this.btnHuy.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold);
             this.btnHuy.ForeColor = System.Drawing.Color.Black;
-            this.btnHuy.Location = new System.Drawing.Point(148, 356);
+            this.btnHuy.Location = new System.Drawing.Point(42, 301);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(171, 36);
+            this.btnHuy.Size = new System.Drawing.Size(190, 36);
             this.btnHuy.TabIndex = 5;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
@@ -89,11 +91,11 @@
             // 
             this.siticoneHtmlLabel1.AutoSize = false;
             this.siticoneHtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.siticoneHtmlLabel1.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.siticoneHtmlLabel1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.siticoneHtmlLabel1.ForeColor = System.Drawing.Color.Transparent;
-            this.siticoneHtmlLabel1.Location = new System.Drawing.Point(157, 76);
+            this.siticoneHtmlLabel1.Location = new System.Drawing.Point(61, 22);
             this.siticoneHtmlLabel1.Name = "siticoneHtmlLabel1";
-            this.siticoneHtmlLabel1.Size = new System.Drawing.Size(171, 39);
+            this.siticoneHtmlLabel1.Size = new System.Drawing.Size(190, 73);
             this.siticoneHtmlLabel1.TabIndex = 6;
             this.siticoneHtmlLabel1.Text = "Thêm Bàn";
             // 
@@ -109,16 +111,31 @@
             this.txtSoBan.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtSoBan.ForeColor = System.Drawing.Color.Black;
             this.txtSoBan.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSoBan.Location = new System.Drawing.Point(148, 155);
+            this.txtSoBan.Location = new System.Drawing.Point(42, 101);
             this.txtSoBan.Name = "txtSoBan";
             this.txtSoBan.PasswordChar = '\0';
             this.txtSoBan.PlaceholderForeColor = System.Drawing.Color.Black;
             this.txtSoBan.PlaceholderText = "Nhập tên bàn";
             this.txtSoBan.SelectedText = "";
-            this.txtSoBan.Size = new System.Drawing.Size(171, 36);
+            this.txtSoBan.Size = new System.Drawing.Size(190, 36);
             this.txtSoBan.TabIndex = 7;
             this.txtSoBan.Click += new System.EventHandler(this.txtSoBan_Click);
             this.txtSoBan.Leave += new System.EventHandler(this.txtSoBan_Leave);
+            // 
+            // plBan
+            // 
+            this.plBan.BackColor = System.Drawing.Color.Transparent;
+            this.plBan.BorderRadius = 20;
+            this.plBan.Controls.Add(this.txtSoBan);
+            this.plBan.Controls.Add(this.siticoneHtmlLabel1);
+            this.plBan.Controls.Add(this.btnHuy);
+            this.plBan.Controls.Add(this.btnLuu);
+            this.plBan.Controls.Add(this.nudSoCho);
+            this.plBan.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.plBan.Location = new System.Drawing.Point(99, 52);
+            this.plBan.Name = "plBan";
+            this.plBan.Size = new System.Drawing.Size(268, 381);
+            this.plBan.TabIndex = 8;
             // 
             // frmBan
             // 
@@ -129,17 +146,14 @@
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(468, 504);
             this.ControlBox = false;
-            this.Controls.Add(this.txtSoBan);
-            this.Controls.Add(this.siticoneHtmlLabel1);
-            this.Controls.Add(this.btnHuy);
-            this.Controls.Add(this.btnLuu);
-            this.Controls.Add(this.nudSoCho);
+            this.Controls.Add(this.plBan);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmBan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmBan";
             this.Load += new System.EventHandler(this.frmBan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudSoCho)).EndInit();
+            this.plBan.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -150,5 +164,6 @@
         private Siticone.Desktop.UI.WinForms.SiticoneButton btnHuy;
         private Siticone.Desktop.UI.WinForms.SiticoneHtmlLabel siticoneHtmlLabel1;
         private Siticone.Desktop.UI.WinForms.SiticoneTextBox txtSoBan;
+        private Siticone.Desktop.UI.WinForms.SiticonePanel plBan;
     }
 }

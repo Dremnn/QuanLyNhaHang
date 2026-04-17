@@ -84,5 +84,30 @@ namespace QuanLyNhaHang.Interface_layer.Admin
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void txtTenMon_Click(object sender, EventArgs e)
+        {
+            txtTenMon.PlaceholderText = "";
+        }
+        private void txtTenMon_Leave(object sender, EventArgs e)
+        {
+            txtTenMon.PlaceholderText = "Nhập tên món";
+        }
+        private void txtGiaBan_Click(object sender, EventArgs e)
+        {
+            txtGiaBan.PlaceholderText = "";
+        }
+        private void txtGiaBan_Leave(object sender, EventArgs e)
+        {
+            txtGiaBan.PlaceholderText = "Nhập giá bán";
+        }
+        private void txtMoTa_Click(object sender, EventArgs e)
+        {
+            txtMoTa.PlaceholderText = "";
+        }
+        private void txtMoTa_Leave(object sender, EventArgs e)
+        {
+            txtMoTa.PlaceholderText = "Nhập mô tả";
+        }
     }
 }

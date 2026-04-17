@@ -36,10 +36,18 @@ namespace QuanLyNhaHang.Interface_layer.Admin
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtSoBan.Text.Trim()))
+            if (string.IsNullOrEmpty(txtSoBan.Text.Trim()) || nudSoCho.Value <= 0)
             {
-                MessageBox.Show("Vui lòng nhập số bàn!", "Thông báo",
+                MessageBox.Show("Vui lòng nhập số bàn và số chỗ!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if(string.IsNullOrEmpty(txtSoBan.Text.Trim()))
+                {
+                    txtSoBan.Focus();
+                }
+                else
+                {
+                    nudSoCho.Focus();
+                }
                 return;
             }
 

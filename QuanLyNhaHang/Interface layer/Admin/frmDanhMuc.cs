@@ -56,5 +56,20 @@ namespace QuanLyNhaHang.Interface_layer.Admin
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+        private void txtTenDanhMuc_Click(object sender, EventArgs e)
+        {
+            if (txtTenDanhMuc.PlaceholderText == "Nhập tên danh mục")
+            {
+                txtTenDanhMuc.PlaceholderText = "";
+            }
+
+        }
+        private void txtTenDanhMuc_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtTenDanhMuc.Text.Trim()))
+            {
+                txtTenDanhMuc.PlaceholderText = "Nhập tên danh mục";
+            }
+        }
     }
 }
