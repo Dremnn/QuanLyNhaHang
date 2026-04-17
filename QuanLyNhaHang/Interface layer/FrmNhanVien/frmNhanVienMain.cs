@@ -37,7 +37,8 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
             cboTrangThaiBan.Items.Add("CóKhách");
             cboTrangThaiBan.Items.Add("DatTruoc");
             cboTrangThaiBan.Items.Add("Dong");
-            cboTrangThaiBan.SelectedIndex = 0;
+            if (cboTrangThaiBan.Items.Count > 0) cboTrangThaiBan.SelectedIndex = 0;
+            if (cboPhuongThuc.Items.Count > 0) cboPhuongThuc.SelectedIndex = 0;
 
             cboPhuongThuc.Items.Clear();
             cboPhuongThuc.Items.Add("TienMat");

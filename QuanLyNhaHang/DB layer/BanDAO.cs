@@ -117,15 +117,20 @@ namespace QuanLyNhaHang.DB_layer
 
         public bool delete(int id)
         {
-            using (SqlConnection conn = DBConnection.GetConnection())
+            try
             {
-                string sql = "DELETE FROM Ban WHERE Id = @id";
-
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@id", id);
-
-                conn.Open();
-                return cmd.ExecuteNonQuery() > 0;
+                using (SqlConnection conn = DBConnection.GetConnection())
+                {
+                    string sql = "DELETE FROM Ban WHERE Id = @id";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    conn.Open();
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (SqlException)
+            {
+                return false;
             }
         }
     }

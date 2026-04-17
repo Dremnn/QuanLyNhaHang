@@ -39,10 +39,7 @@ namespace QuanLyNhaHang.Interface_layer.Admin
             cboVaiTro.Items.Add("Admin");
             cboVaiTro.Items.Add("NhanVien");
             cboVaiTro.Items.Add("KhachHang");
-            if (cboVaiTro.Items.Count > 0)
-            {
-                cboVaiTro.SelectedIndex = 0;
-            }
+            if (cboVaiTro.Items.Count > 0)  cboVaiTro.SelectedIndex = 0;
 
             LoadAvatar(
                 SessionHelper.CurrentUser.VaiTro.ToString(),

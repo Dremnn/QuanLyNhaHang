@@ -65,6 +65,7 @@ namespace QuanLyNhaHang.DB_layer
                 cmd.Parameters.AddWithValue("@diaChi", (object)khachHang.DiaChi ?? DBNull.Value);
                 cmd.Parameters.AddWithValue("@id", khachHang.KhachHangId);
 
+
                 conn.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
@@ -81,7 +82,8 @@ namespace QuanLyNhaHang.DB_layer
                 NguoiDungId = reader["NguoiDungId"] == DBNull.Value ? (int?)null : Convert.ToInt32(reader["NguoiDungId"]),
                 Email = reader["Email"] == DBNull.Value ? null : reader["Email"].ToString(),
                 DiaChi = reader["DiaChi"] == DBNull.Value ? null : reader["DiaChi"].ToString(),
-                NgayTaoKH = Convert.ToDateTime(reader["NgayTao"])
+                NgayTaoKH = Convert.ToDateTime(reader["NgayTao"]),
+                HinhAnh = reader["HinhAnh"] == DBNull.Value ? null : reader["HinhAnh"].ToString()
             };
         }
 
