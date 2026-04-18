@@ -136,11 +136,9 @@ namespace QuanLyNhaHang.Interface_layer
             }
         }
 
-        // Event này sinh ra do bạn vô tình click đúp vào picBanner bên giao diện
-        // Cứ để trống hoặc bạn có thể dọn dẹp theo Cách 1 ở câu trả lời trước
-        private void picBanner_Click(object sender, EventArgs e)
+        private void btnThoat_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }

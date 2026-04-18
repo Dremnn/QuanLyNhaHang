@@ -9,7 +9,7 @@ namespace QuanLyNhaHang.Model
     public enum TrangThaiBan
     {
         Trong,
-        CóKhách,
+        CoKhach,
         DatTruoc,
         Dong
     }

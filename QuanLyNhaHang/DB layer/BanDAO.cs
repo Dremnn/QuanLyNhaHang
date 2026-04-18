@@ -70,11 +70,20 @@ namespace QuanLyNhaHang.DB_layer
 
         private Ban mapToBan(SqlDataReader reader)
         {
+            string rawTrangThai = reader["TrangThai"].ToString();
+            string normalizedTrangThai = rawTrangThai
+                .Replace("CóKhách", "CoKhach")
+                .Replace("Có Khách", "CoKhach")
+                .Replace("Đông", "Dong");
+
+            TrangThaiBan trangThai = (TrangThaiBan)Enum.Parse(
+                typeof(TrangThaiBan), normalizedTrangThai);
+
             return new Ban(
                 id: Convert.ToInt32(reader["Id"]),
                 soBan: reader["SoBan"].ToString(),
                 soCho: Convert.ToInt32(reader["SoCho"]),
-                trangThai: (TrangThaiBan)Enum.Parse(typeof(TrangThaiBan), reader["TrangThai"].ToString())
+                trangThai: trangThai
             );
         }
 

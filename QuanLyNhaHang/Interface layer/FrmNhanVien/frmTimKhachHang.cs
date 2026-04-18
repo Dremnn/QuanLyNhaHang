@@ -47,5 +47,10 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

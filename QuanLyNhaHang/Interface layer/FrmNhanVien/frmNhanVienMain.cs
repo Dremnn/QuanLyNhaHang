@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
+﻿using DBConnection = QuanLyNhaHang.DB_layer.DBConnection;
 using QuanLyNhaHang.BL_layer;
 using QuanLyNhaHang.Helpers;
 using QuanLyNhaHang.Model;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.IO;
+using System.Windows.Forms;
 
 namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
 {
@@ -30,11 +34,12 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
         // ==========================================
         private void frmNhanVienMain_Load(object sender, EventArgs e)
         {
-            lblNhanVien.Text = $"Nhân viên: {SessionHelper.CurrentUser.TenDangNhap}";
-
+            lblNhanVien.Text = $"Tên      : {SessionHelper.CurrentUser.TenDangNhap}";
+            lblVaiTro.Text = $"Vai trò  : {SessionHelper.CurrentUser.VaiTro}";
+            lblID.Text = $"ID       : {SessionHelper.CurrentUser.Id}";
             cboTrangThaiBan.Items.Clear();
             cboTrangThaiBan.Items.Add("Trong");
-            cboTrangThaiBan.Items.Add("CóKhách");
+            cboTrangThaiBan.Items.Add("CoKhach");
             cboTrangThaiBan.Items.Add("DatTruoc");
             cboTrangThaiBan.Items.Add("Dong");
             if (cboTrangThaiBan.Items.Count > 0) cboTrangThaiBan.SelectedIndex = 0;
@@ -53,6 +58,11 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
             btnMonCanh.Click += (s, ev) => loadMonAnNV(2);
             btnMonThem.Click += (s, ev) => loadMonAnNV(3);
             btnGiaiKhat.Click += (s, ev) => loadMonAnNV(4);
+
+            LoadAvatar(
+                SessionHelper.CurrentUser.VaiTro.ToString(), 
+                SessionHelper.CurrentUser.HinhAnh
+             );
 
             loadMonAnNV(0);
             loadDanhSachBan();
@@ -128,7 +138,7 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
             }
 
             string trangThai = dgvBan.SelectedRows[0].Cells["colTrangThai"].Value.ToString();
-            if (trangThai == "Trong")
+            if (trangThai == "Trống")
             {
                 MessageBox.Show("Bàn này chưa có đặt!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -412,7 +422,8 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
         {
             switch (current)
             {
-                case "ChoDuyet": return "DangCheBien";
+                case "ChoDuyet": return "Dang" +
+                        "CheBien";
                 case "DangCheBien": return "DaPhucVu";
                 case "DaPhucVu": return "YeuCauTinh";
                 default: return null;
@@ -553,6 +564,72 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
 
             if (result == DialogResult.Yes)
                 this.Close();
+        }
+        private void pBAVT_Paint(object sender, PaintEventArgs e)
+        {
+            using (GraphicsPath gp = new GraphicsPath())
+            {
+                gp.AddEllipse(0, 0, pBAVT.Width - 1, pBAVT.Height - 1);
+                pBAVT.Region = new Region(gp);
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                e.Graphics.DrawEllipse(new Pen(Color.LightGray, 2), 0, 0, pBAVT.Width - 1, pBAVT.Height - 1);
+            }
+        }
+
+        private void pBAVT_Click(object sender, EventArgs e)
+        {
+            if (ofdAVT.ShowDialog() == DialogResult.OK)
+            {
+                string userRole = SessionHelper.CurrentUser.VaiTro.ToString(); // "NhanVien"
+                string userID = SessionHelper.CurrentUser.Id.ToString();
+                string folderPath = Path.Combine(Application.StartupPath, "Avatars", userRole);
+                if (!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
+                string extension = Path.GetExtension(ofdAVT.FileName);
+                string fileName = userID + extension;
+                string destPath = Path.Combine(folderPath, fileName);
+                File.Copy(ofdAVT.FileName, destPath, true);
+                using (FileStream fs = new FileStream(destPath, FileMode.Open, FileAccess.Read))
+                    pBAVT.Image = Image.FromStream(fs);
+                SaveToDatabase(userID, userRole + "/" + fileName);
+            }
+        }
+
+        private void SaveToDatabase(string userID, string relativePath)
+        {
+            try
+            {
+                string sql = "UPDATE NguoiDung SET HinhAnh = @hinh WHERE Id = @id";
+                using (SqlConnection conn = DBConnection.GetConnection())
+                {
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@hinh", relativePath);
+                    cmd.Parameters.AddWithValue("@id", Convert.ToInt32(userID));
+                    conn.Open();
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        SessionHelper.CurrentUser.HinhAnh = relativePath;
+                        MessageBox.Show("Đã cập nhật ảnh đại diện!");
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Lỗi Database: " + ex.Message); }
+        }
+
+        private void LoadAvatar(string userRole, string fileNameFromDb)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(fileNameFromDb)) { pBAVT.Image = Properties.Resources.default_user; return; }
+                string fullPath = Path.Combine(Application.StartupPath, "Avatars", fileNameFromDb);
+                if (!File.Exists(fullPath))
+                    fullPath = Path.Combine(Application.StartupPath, "Avatars", userRole, fileNameFromDb);
+                if (File.Exists(fullPath))
+                    using (FileStream fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
+                        pBAVT.Image = Image.FromStream(fs);
+                else
+                    pBAVT.Image = Properties.Resources.default_user;
+            }
+            catch (Exception ex) { MessageBox.Show("Lỗi khi tải ảnh: " + ex.Message); }
         }
 
     }

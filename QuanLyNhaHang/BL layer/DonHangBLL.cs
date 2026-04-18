@@ -40,7 +40,7 @@ namespace QuanLyNhaHang.BL_layer
             if (newId <= 0)
                 return false;
 
-            banDAO.updateTrangThai(banId, "CóKhách");
+            banDAO.updateTrangThai(banId, "CoKhach");
             return true;
         }
 

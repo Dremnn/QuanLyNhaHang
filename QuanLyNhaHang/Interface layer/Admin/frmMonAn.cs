@@ -23,8 +23,14 @@ namespace QuanLyNhaHang.Interface_layer.Admin
             // Load danh mục vào ComboBox
             cboDanhMuc.Items.Clear();
             _danhMucList.ForEach(dm => cboDanhMuc.Items.Add(dm.TenDanhMuc));
+            if (cboDanhMuc.Items.Count == 0)
+            {
+                MessageBox.Show("Chưa có danh mục nào! Vui lòng thêm danh mục trước.");
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+                return;
+            }
             cboDanhMuc.SelectedIndex = 0;
-
             chkConHang.Checked = true;
 
             // Nếu là sửa thì điền thông tin vào
