@@ -100,7 +100,6 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(963, 93);
             this.pnlHeader.TabIndex = 3;
-
             // 
             // pBAVT
             // 
@@ -512,6 +511,5 @@
         private System.Windows.Forms.Label lblVaiTro;
         private System.Windows.Forms.PictureBox pBAVT;
         private System.Windows.Forms.OpenFileDialog ofdAVT;
-
     }
 }

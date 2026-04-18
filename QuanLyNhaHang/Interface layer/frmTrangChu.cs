@@ -41,7 +41,6 @@ namespace QuanLyNhaHang.Interface_layer
             btnMonThem.Click += (s, ev) => loadMonAn(3);
             btnGiaiKhat.Click += (s, ev) => loadMonAn(4);
 
-            // 3. Hiển thị tất cả món ăn khi vừa mở form lên
             loadMonAn(0);
         }
 
@@ -98,7 +97,6 @@ namespace QuanLyNhaHang.Interface_layer
         {
             frmDangNhap frmLogin = new frmDangNhap();
 
-            // Nếu form Đăng Nhập trả về kết quả OK (đăng nhập thành công)
             if (frmLogin.ShowDialog() == DialogResult.OK)
             {
                 // Kiểm tra SessionHelper xem user có quyền gì

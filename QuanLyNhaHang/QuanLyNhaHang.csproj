@@ -94,11 +94,6 @@
     <Compile Include="BL layer\MonAnBLL.cs" />
     <Compile Include="BL layer\NguoiDungBLL.cs" />
     <Compile Include="BL layer\ThanhToanBLL.cs" />
-    <Compile Include="DSBaoCao.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DSBaoCao.xsd</DependentUpon>
-    </Compile>
     <Compile Include="DB layer\BanDAO.cs" />
     <Compile Include="DB layer\ChiTietDonDAO.cs" />
     <Compile Include="DB layer\DanhMucDAO.cs" />
@@ -188,12 +183,6 @@
     <Compile Include="Interface layer\FrmNhanVien\frmTimKhachHang.Designer.cs">
       <DependentUpon>frmTimKhachHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interface layer\FrmReport\frmReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Interface layer\FrmReport\frmReport.Designer.cs">
-      <DependentUpon>frmReport.cs</DependentUpon>
-    </Compile>
     <Compile Include="Interface layer\frmTrangChu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,9 +242,6 @@
     <EmbeddedResource Include="Interface layer\FrmNhanVien\frmTimKhachHang.resx">
       <DependentUpon>frmTimKhachHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Interface layer\FrmReport\frmReport.resx">
-      <DependentUpon>frmReport.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Interface layer\frmTrangChu.resx">
       <DependentUpon>frmTrangChu.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,18 +255,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reports\rptDoanhThu.rdlc" />
-    <None Include="DSBaoCao.xsc">
-      <DependentUpon>DSBaoCao.xsd</DependentUpon>
-    </None>
-    <None Include="DSBaoCao.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DSBaoCao.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="DSBaoCao.xss">
-      <DependentUpon>DSBaoCao.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

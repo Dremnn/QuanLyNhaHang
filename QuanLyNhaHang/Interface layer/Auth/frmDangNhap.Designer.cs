@@ -55,7 +55,6 @@
             this.txtMatKhau.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.txtMatKhau.ForeColor = System.Drawing.Color.White;
             this.txtMatKhau.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMatKhau.IconRight = ((System.Drawing.Image)(resources.GetObject("txtMatKhau.IconRight")));
             this.txtMatKhau.IconRightOffset = new System.Drawing.Point(5, 0);
             this.txtMatKhau.IconRightSize = new System.Drawing.Size(32, 32);
             this.txtMatKhau.Location = new System.Drawing.Point(38, 211);
@@ -94,7 +93,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(126, 272);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 15);
+            this.label2.Size = new System.Drawing.Size(117, 16);
             this.label2.TabIndex = 16;
             this.label2.Text = "Chưa có tài khoản?";
             // 
@@ -176,7 +175,6 @@
             this.txtTenDangNhap.ForeColor = System.Drawing.Color.White;
             this.txtTenDangNhap.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTenDangNhap.IconLeftSize = new System.Drawing.Size(0, 0);
-            this.txtTenDangNhap.IconRight = ((System.Drawing.Image)(resources.GetObject("txtTenDangNhap.IconRight")));
             this.txtTenDangNhap.IconRightOffset = new System.Drawing.Point(5, 0);
             this.txtTenDangNhap.IconRightSize = new System.Drawing.Size(32, 32);
             this.txtTenDangNhap.Location = new System.Drawing.Point(38, 128);
@@ -201,7 +199,6 @@
             this.ClientSize = new System.Drawing.Size(500, 759);
             this.Controls.Add(this.pnlDangNhap);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";

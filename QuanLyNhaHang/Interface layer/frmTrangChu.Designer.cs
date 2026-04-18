@@ -32,13 +32,13 @@
             this.lblTenQuan = new System.Windows.Forms.Label();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabThucDon = new System.Windows.Forms.TabPage();
-            this.lvMonAn = new System.Windows.Forms.ListView();
             this.pnlDanhMuc = new System.Windows.Forms.FlowLayoutPanel();
             this.btnTatCa = new System.Windows.Forms.Button();
             this.btnMonCom = new System.Windows.Forms.Button();
             this.btnMonCanh = new System.Windows.Forms.Button();
             this.btnMonThem = new System.Windows.Forms.Button();
             this.btnGiaiKhat = new System.Windows.Forms.Button();
+            this.lvMonAn = new System.Windows.Forms.ListView();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBanner)).BeginInit();
@@ -72,7 +72,7 @@
             // 
             this.tabMain.Controls.Add(this.tabThucDon);
             this.tabMain.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tabMain.Location = new System.Drawing.Point(12, 88);
+            this.tabMain.Location = new System.Drawing.Point(12, 100);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
             this.tabMain.Size = new System.Drawing.Size(972, 438);
@@ -89,26 +89,18 @@
             this.tabThucDon.Text = "Thực Đơn";
             this.tabThucDon.UseVisualStyleBackColor = true;
             // 
-            // lvMonAn
-            // 
-            this.lvMonAn.HideSelection = false;
-            this.lvMonAn.Location = new System.Drawing.Point(3, 76);
-            this.lvMonAn.Name = "lvMonAn";
-            this.lvMonAn.Size = new System.Drawing.Size(952, 320);
-            this.lvMonAn.TabIndex = 3;
-            this.lvMonAn.UseCompatibleStateImageBehavior = false;
-            // 
             // pnlDanhMuc
             // 
             this.pnlDanhMuc.Controls.Add(this.btnTatCa);
             this.pnlDanhMuc.Controls.Add(this.btnMonCom);
             this.pnlDanhMuc.Controls.Add(this.btnMonCanh);
-            this.pnlDanhMuc.Controls.Add(this.lvMonAn);
             this.pnlDanhMuc.Controls.Add(this.btnMonThem);
             this.pnlDanhMuc.Controls.Add(this.btnGiaiKhat);
-            this.pnlDanhMuc.Location = new System.Drawing.Point(7, 6);
+            this.pnlDanhMuc.Controls.Add(this.lvMonAn);
+            this.pnlDanhMuc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDanhMuc.Location = new System.Drawing.Point(3, 3);
             this.pnlDanhMuc.Name = "pnlDanhMuc";
-            this.pnlDanhMuc.Size = new System.Drawing.Size(951, 73);
+            this.pnlDanhMuc.Size = new System.Drawing.Size(958, 400);
             this.pnlDanhMuc.TabIndex = 2;
             // 
             // btnTatCa
@@ -140,21 +132,30 @@
             // 
             // btnMonThem
             // 
-            this.btnMonThem.Location = new System.Drawing.Point(3, 402);
+            this.btnMonThem.Location = new System.Drawing.Point(468, 3);
             this.btnMonThem.Name = "btnMonThem";
             this.btnMonThem.Size = new System.Drawing.Size(149, 67);
-            this.btnMonThem.TabIndex = 3;
+            this.btnMonThem.TabIndex = 4;
             this.btnMonThem.Text = "Món Thêm";
             this.btnMonThem.UseVisualStyleBackColor = true;
             // 
             // btnGiaiKhat
             // 
-            this.btnGiaiKhat.Location = new System.Drawing.Point(158, 402);
+            this.btnGiaiKhat.Location = new System.Drawing.Point(623, 3);
             this.btnGiaiKhat.Name = "btnGiaiKhat";
             this.btnGiaiKhat.Size = new System.Drawing.Size(149, 67);
-            this.btnGiaiKhat.TabIndex = 4;
+            this.btnGiaiKhat.TabIndex = 5;
             this.btnGiaiKhat.Text = "Giải Khát";
             this.btnGiaiKhat.UseVisualStyleBackColor = true;
+            // 
+            // lvMonAn
+            // 
+            this.lvMonAn.HideSelection = false;
+            this.lvMonAn.Location = new System.Drawing.Point(3, 76);
+            this.lvMonAn.Name = "lvMonAn";
+            this.lvMonAn.Size = new System.Drawing.Size(952, 320);
+            this.lvMonAn.TabIndex = 3;
+            this.lvMonAn.UseCompatibleStateImageBehavior = false;
             // 
             // btnDangNhap
             // 
@@ -212,10 +213,10 @@
         private System.Windows.Forms.Button btnTatCa;
         private System.Windows.Forms.Button btnMonCom;
         private System.Windows.Forms.Button btnMonCanh;
-        private System.Windows.Forms.Button btnMonThem;
-        private System.Windows.Forms.Button btnGiaiKhat;
         private System.Windows.Forms.ListView lvMonAn;
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.Button btnMonThem;
+        private System.Windows.Forms.Button btnGiaiKhat;
     }
 }
