@@ -118,7 +118,7 @@
             // lblTongDoanhThu
             // 
             this.lblTongDoanhThu.AutoSize = true;
-            this.lblTongDoanhThu.Location = new System.Drawing.Point(801, 366);
+            this.lblTongDoanhThu.Location = new System.Drawing.Point(690, 284);
             this.lblTongDoanhThu.Name = "lblTongDoanhThu";
             this.lblTongDoanhThu.Size = new System.Drawing.Size(139, 19);
             this.lblTongDoanhThu.TabIndex = 6;
@@ -127,23 +127,23 @@
             // dgvMonBanChay
             // 
             this.dgvMonBanChay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMonBanChay.Location = new System.Drawing.Point(504, 104);
+            this.dgvMonBanChay.Location = new System.Drawing.Point(20, 284);
             this.dgvMonBanChay.Name = "dgvMonBanChay";
             this.dgvMonBanChay.ReadOnly = true;
             this.dgvMonBanChay.RowHeadersWidth = 51;
             this.dgvMonBanChay.RowTemplate.Height = 24;
-            this.dgvMonBanChay.Size = new System.Drawing.Size(418, 228);
+            this.dgvMonBanChay.Size = new System.Drawing.Size(591, 132);
             this.dgvMonBanChay.TabIndex = 5;
             // 
             // dgvBaoCao
             // 
             this.dgvBaoCao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBaoCao.Location = new System.Drawing.Point(21, 104);
+            this.dgvBaoCao.Location = new System.Drawing.Point(20, 77);
             this.dgvBaoCao.Name = "dgvBaoCao";
             this.dgvBaoCao.ReadOnly = true;
             this.dgvBaoCao.RowHeadersWidth = 51;
             this.dgvBaoCao.RowTemplate.Height = 24;
-            this.dgvBaoCao.Size = new System.Drawing.Size(449, 228);
+            this.dgvBaoCao.Size = new System.Drawing.Size(898, 186);
             this.dgvBaoCao.TabIndex = 4;
             // 
             // btnXemBaoCao

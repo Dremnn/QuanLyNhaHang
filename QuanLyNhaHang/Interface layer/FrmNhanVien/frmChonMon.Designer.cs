@@ -96,6 +96,7 @@
             this.btnHuy.Size = new System.Drawing.Size(110, 50);
             this.btnHuy.TabIndex = 13;
             this.btnHuy.Text = "Hủy";
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnXacNhan
             // 
@@ -113,6 +114,7 @@
             this.btnXacNhan.Size = new System.Drawing.Size(110, 50);
             this.btnXacNhan.TabIndex = 14;
             this.btnXacNhan.Text = "Xác Nhận";
+            this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
             // label1
             // 

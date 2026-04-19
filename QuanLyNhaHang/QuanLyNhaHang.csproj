@@ -103,6 +103,11 @@
     <Compile Include="DB layer\MonAnDAO.cs" />
     <Compile Include="DB layer\NguoiDungDAO.cs" />
     <Compile Include="DB layer\ThanhToanDAO.cs" />
+    <Compile Include="dsReport.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsReport.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +127,12 @@
     </Compile>
     <Compile Include="Interface layer\Admin\frmBan.Designer.cs">
       <DependentUpon>frmBan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface layer\Admin\frmBaoCaoReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface layer\Admin\frmBaoCaoReport.Designer.cs">
+      <DependentUpon>frmBaoCaoReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface layer\Admin\frmDanhMuc.cs">
       <SubType>Form</SubType>
@@ -164,6 +175,12 @@
     </Compile>
     <Compile Include="Interface layer\FrmNhanVien\frmChonMon.Designer.cs">
       <DependentUpon>frmChonMon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface layer\FrmNhanVien\frmHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interface layer\FrmNhanVien\frmHoaDon.Designer.cs">
+      <DependentUpon>frmHoaDon.cs</DependentUpon>
     </Compile>
     <Compile Include="Interface layer\FrmNhanVien\frmKhachVangLai.cs">
       <SubType>Form</SubType>
@@ -212,6 +229,9 @@
     <EmbeddedResource Include="Interface layer\Admin\frmBan.resx">
       <DependentUpon>frmBan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Interface layer\Admin\frmBaoCaoReport.resx">
+      <DependentUpon>frmBaoCaoReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Interface layer\Admin\frmDanhMuc.resx">
       <DependentUpon>frmDanhMuc.cs</DependentUpon>
     </EmbeddedResource>
@@ -232,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interface layer\FrmNhanVien\frmChonMon.resx">
       <DependentUpon>frmChonMon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interface layer\FrmNhanVien\frmHoaDon.resx">
+      <DependentUpon>frmHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interface layer\FrmNhanVien\frmKhachVangLai.resx">
       <DependentUpon>frmKhachVangLai.cs</DependentUpon>
@@ -255,6 +278,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="rptDoanhThu.rdlc" />
+    <EmbeddedResource Include="rptHoaDon.rdlc" />
+    <None Include="dsReport.xsc">
+      <DependentUpon>dsReport.xsd</DependentUpon>
+    </None>
+    <None Include="dsReport.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsReport.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="dsReport.xss">
+      <DependentUpon>dsReport.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -276,6 +312,18 @@
     <None Include="Resources\default_user.png" />
   </ItemGroup>
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -289,18 +337,6 @@
     <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

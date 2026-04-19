@@ -49,6 +49,10 @@ namespace QuanLyNhaHang.BL_layer
             if (nguoiDungDAO.isTenDangNhapExists(tenDangNhap))
                 return false;
 
+            // ← thêm check SĐT trùng
+            if (khachHangDAO.getBySoDienThoai(soDienThoai) != null)
+                return false;
+
             // Tạo NguoiDung
             NguoiDung nguoiDung = new NguoiDung
             {
@@ -61,7 +65,6 @@ namespace QuanLyNhaHang.BL_layer
             int newId = nguoiDungDAO.insert(nguoiDung);
             if (newId <= 0) return false;
 
-            // Tạo KhachHang liên kết với NguoiDung vừa tạo
             KhachHang khachHang = new KhachHang(hoTen, soDienThoai)
             {
                 NguoiDungId = newId

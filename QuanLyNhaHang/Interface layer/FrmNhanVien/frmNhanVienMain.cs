@@ -477,27 +477,8 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
 
         private void xuatHoaDon(int donHangId, decimal tienGiam, PhuongThucThanhToan phuongThuc)
         {
-            List<ChiTietDon> list = chiTietDonBLL.getByDonHangId(donHangId);
-            decimal tongTien = chiTietDonBLL.tinhTongTien(donHangId);
-            decimal tienThanhToan = tongTien - tienGiam;
-
-            string hoaDon = "========== HOÁ ĐƠN ==========\n";
-            hoaDon += $"Mã đơn   : #{donHangId}\n";
-            hoaDon += $"Ngày     : {DateTime.Now:dd/MM/yyyy HH:mm}\n";
-            hoaDon += "------------------------------\n";
-
-            foreach (ChiTietDon ct in list)
-                hoaDon += $"{ct.TenMon,-20} {ct.SoLuong} x {ct.DonGia:N0}đ = {ct.ThanhTien:N0}đ\n";
-
-            hoaDon += "------------------------------\n";
-            hoaDon += $"Tổng tiền    : {tongTien:N0}đ\n";
-            hoaDon += $"Giảm giá     : {tienGiam:N0}đ\n";
-            hoaDon += $"Thanh toán   : {tienThanhToan:N0}đ\n";
-            hoaDon += $"Phương thức  : {phuongThuc}\n";
-            hoaDon += "==============================\n";
-            hoaDon += "     Cảm ơn quý khách!\n";
-
-            MessageBox.Show(hoaDon, "Hoá đơn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            frmHoaDon frmHD = new frmHoaDon(selectedDonHangId);
+            frmHD.ShowDialog();
         }
 
         private void nudTienGiam_ValueChanged(object sender, EventArgs e)

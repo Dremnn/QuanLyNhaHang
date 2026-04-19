@@ -10,7 +10,7 @@ namespace QuanLyNhaHang.DB_layer
     public class DBConnection 
     {
         private static readonly string connectionString =
-            "Server=TUS\\SQLEXPRESS;Database=QuanLyNhaHang;Trusted_Connection=True;";
+            "Server=TRONGTRUNG\\SQLEXPRESS;Database=QuanLyNhaHang;Trusted_Connection=True;";
 
         public static SqlConnection GetConnection()
         {

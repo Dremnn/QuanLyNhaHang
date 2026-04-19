@@ -38,6 +38,8 @@ namespace QuanLyNhaHang.Interface_layer.Auth
                 return;
             }
 
+
+
             if (tenDangNhap.Length < 6)
             {
                 MessageBox.Show("Tên đăng nhập phải từ 6 ký tự trở lên!", "Thông báo",
@@ -63,7 +65,7 @@ namespace QuanLyNhaHang.Interface_layer.Auth
 
             if (!ketQua)
             {
-                MessageBox.Show("Tên đăng nhập đã tồn tại!", "Lỗi",
+                MessageBox.Show("Tên đăng nhập hoặc SĐT đã tồn tại!", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

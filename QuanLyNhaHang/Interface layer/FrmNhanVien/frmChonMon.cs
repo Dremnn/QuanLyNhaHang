@@ -33,7 +33,7 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
                 lbMon.Items.Add($"{m.TenMon} - {m.GiaBan:N0}đ"));
         }
 
-        private void btnThem_Click(object sender, EventArgs e)
+        private void btnXacNhan_Click(object sender, EventArgs e)
         {
             if (lbMon.SelectedIndex < 0)
             {

@@ -453,13 +453,17 @@ namespace QuanLyNhaHang.Interface_layer.Admin
 
             if (tuNgay > denNgay)
             {
-                MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ngày bắt đầu phải nhỏ hơn ngày kết thúc!");
                 return;
             }
 
+            // Vẫn load DataGridView như cũ
             loadBaoCaoDoanhThu(tuNgay, denNgay);
             loadMonBanChay(tuNgay, denNgay);
+
+            // Thêm: mở form report
+            frmBaoCaoReport frmReport = new frmBaoCaoReport(tuNgay, denNgay);
+            frmReport.ShowDialog();
         }
 
         private void loadBaoCaoDoanhThu(DateTime tuNgay, DateTime denNgay)
