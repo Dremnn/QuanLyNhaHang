@@ -92,5 +92,14 @@ namespace QuanLyNhaHang.BL_layer
 
             return nguoiDungDAO.updateVaiTro(id, vaiTro);
         }
+
+        public bool delete(int id)
+        {
+            // Ràng buộc bảo mật: Không cho phép người dùng tự xóa chính mình
+            if (id == SessionHelper.CurrentUser.Id)
+                return false;
+
+            return nguoiDungDAO.delete(id);
+        }
     }
 }

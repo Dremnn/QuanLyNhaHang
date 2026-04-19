@@ -67,6 +67,7 @@
             this.lblVaiTro = new System.Windows.Forms.Label();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.ofdAvatar = new System.Windows.Forms.OpenFileDialog();
+            this.btnXoaTaiKhoan = new System.Windows.Forms.Button();
             this.tabMain.SuspendLayout();
             this.tabBaoCao.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonBanChay)).BeginInit();
@@ -192,6 +193,7 @@
             // 
             // tabTaiKhoan
             // 
+            this.tabTaiKhoan.Controls.Add(this.btnXoaTaiKhoan);
             this.tabTaiKhoan.Controls.Add(this.btnKhoaMo);
             this.tabTaiKhoan.Controls.Add(this.btnDoiVaiTro);
             this.tabTaiKhoan.Controls.Add(this.cboVaiTro);
@@ -495,6 +497,16 @@
             // 
             this.ofdAvatar.FileName = "openFileDialog1";
             // 
+            // btnXoaTaiKhoan
+            // 
+            this.btnXoaTaiKhoan.Location = new System.Drawing.Point(746, 220);
+            this.btnXoaTaiKhoan.Name = "btnXoaTaiKhoan";
+            this.btnXoaTaiKhoan.Size = new System.Drawing.Size(175, 34);
+            this.btnXoaTaiKhoan.TabIndex = 4;
+            this.btnXoaTaiKhoan.Text = "Xóa Tài Khoản";
+            this.btnXoaTaiKhoan.UseVisualStyleBackColor = true;
+            this.btnXoaTaiKhoan.Click += new System.EventHandler(this.btnXoaTaiKhoan_Click);
+            // 
             // frmAdminMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -569,5 +581,6 @@
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.PictureBox pBAVT;
         private System.Windows.Forms.OpenFileDialog ofdAvatar;
+        private System.Windows.Forms.Button btnXoaTaiKhoan;
     }
 }
