@@ -630,5 +630,40 @@ namespace QuanLyNhaHang.Interface_layer.Admin
                 MessageBox.Show("Lỗi khi tải ảnh: " + ex.Message);
             }
         }
+
+        private void btnXoaTaiKhoan_Click(object sender, EventArgs e)
+        {
+            if (dgvTaiKhoan.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn tài khoản muốn xóa!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lấy ID và tên của tài khoản đang chọn
+            int id = Convert.ToInt32(dgvTaiKhoan.SelectedRows[0].Cells["colTKId"].Value);
+            string tenTK = dgvTaiKhoan.SelectedRows[0].Cells["colTKTen"].Value.ToString();
+
+            // Xác nhận trước khi xóa
+            DialogResult confirm = MessageBox.Show(
+                $"Bạn có chắc chắn muốn xóa vĩnh viễn tài khoản [{tenTK}] không?\nHành động này không thể hoàn tác.",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm != DialogResult.Yes) return;
+
+            // Gọi BLL thực hiện xóa
+            bool ketQua = nguoiDungBLL.delete(id);
+            if (ketQua)
+            {
+                MessageBox.Show("Xóa tài khoản thành công!", "Thông báo");
+                loadTaiKhoan(); // Tải lại danh sách sau khi xóa
+            }
+            else
+            {
+                MessageBox.Show("Xóa thất bại! Bạn không thể xóa chính mình hoặc tài khoản này đang có dữ liệu liên quan (như đơn hàng).",
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

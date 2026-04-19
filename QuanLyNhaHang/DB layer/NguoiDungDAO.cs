@@ -138,5 +138,33 @@ namespace QuanLyNhaHang.DB_layer
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+
+        public bool delete(int id)
+        {
+            try
+            {
+                using (SqlConnection conn = DBConnection.GetConnection())
+                {
+                    conn.Open();
+                    // Xóa bản ghi ở bảng KhachHang trước nếu có ràng buộc khóa ngoại
+                    string sqlKH = "DELETE FROM KhachHang WHERE NguoiDungId = @id";
+                    SqlCommand cmdKH = new SqlCommand(sqlKH, conn);
+                    cmdKH.Parameters.AddWithValue("@id", id);
+                    cmdKH.ExecuteNonQuery();
+
+                    // Sau đó xóa ở bảng NguoiDung
+                    string sqlND = "DELETE FROM NguoiDung WHERE Id = @id";
+                    SqlCommand cmdND = new SqlCommand(sqlND, conn);
+                    cmdND.Parameters.AddWithValue("@id", id);
+
+                    return cmdND.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (SqlException)
+            {
+                // Trả về false nếu có lỗi (ví dụ: đang có dữ liệu ràng buộc ở bảng DonHang)
+                return false;
+            }
+        }
     }
 }
