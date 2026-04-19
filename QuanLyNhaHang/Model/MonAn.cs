@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QuanLyNhaHang.Model
 {
-    public class MonAn
+    public class MonAn : IMonAnComponent
     {
         public int Id { get; set; }
         public int DanhMucId { get; set; }
@@ -16,7 +12,6 @@ namespace QuanLyNhaHang.Model
         public bool ConHang { get; set; } = true;
         public string AnhUrl { get; set; }
 
-        // Navigation property
         public string TenDanhMuc { get; set; }
 
         public MonAn() { }
@@ -34,5 +29,16 @@ namespace QuanLyNhaHang.Model
         }
 
         public override string ToString() => $"{TenMon} - {GiaBan:N0}đ";
+
+        // COMPOSITE PATTERN
+        public string LaysTen()
+        {
+            return TenMon;
+        }
+
+        public decimal TinhGia()
+        {
+            return GiaBan;
+        }
     }
 }

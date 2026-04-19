@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.pBAVT = new System.Windows.Forms.PictureBox();
@@ -54,16 +55,12 @@
             this.btnCapNhatBan = new System.Windows.Forms.Button();
             this.cboTrangThaiBan = new System.Windows.Forms.ComboBox();
             this.dgvBan = new System.Windows.Forms.DataGridView();
-            this.lvMonAnNV = new System.Windows.Forms.ListView();
-            this.pnlDanhMucNV = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnTatCa = new System.Windows.Forms.Button();
-            this.btnMonCom = new System.Windows.Forms.Button();
-            this.btnMonCanh = new System.Windows.Forms.Button();
-            this.btnMonThem = new System.Windows.Forms.Button();
-            this.btnGiaiKhat = new System.Windows.Forms.Button();
+            this.lvMonAn = new System.Windows.Forms.ListView();
             this.tabThucDon = new System.Windows.Forms.TabPage();
+            this.flpDanhMuc = new System.Windows.Forms.FlowLayoutPanel();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.ofdAVT = new System.Windows.Forms.OpenFileDialog();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBAVT)).BeginInit();
             this.tabThanhToan.SuspendLayout();
@@ -73,7 +70,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTiet)).BeginInit();
             this.tabBan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBan)).BeginInit();
-            this.pnlDanhMucNV.SuspendLayout();
             this.tabThucDon.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.SuspendLayout();
@@ -162,7 +158,7 @@
             this.lblMaDon.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblMaDon.Location = new System.Drawing.Point(407, 14);
             this.lblMaDon.Name = "lblMaDon";
-            this.lblMaDon.Size = new System.Drawing.Size(159, 32);
+            this.lblMaDon.Size = new System.Drawing.Size(160, 32);
             this.lblMaDon.TabIndex = 5;
             this.lblMaDon.Text = "Mã đơn: [n]";
             // 
@@ -348,76 +344,19 @@
             this.dgvBan.TabIndex = 0;
             this.dgvBan.SelectionChanged += new System.EventHandler(this.dgvBan_SelectionChanged);
             // 
-            // lvMonAnNV
+            // lvMonAn
             // 
-            this.lvMonAnNV.HideSelection = false;
-            this.lvMonAnNV.Location = new System.Drawing.Point(6, 101);
-            this.lvMonAnNV.Name = "lvMonAnNV";
-            this.lvMonAnNV.Size = new System.Drawing.Size(952, 356);
-            this.lvMonAnNV.TabIndex = 0;
-            this.lvMonAnNV.UseCompatibleStateImageBehavior = false;
-            // 
-            // pnlDanhMucNV
-            // 
-            this.pnlDanhMucNV.Controls.Add(this.btnTatCa);
-            this.pnlDanhMucNV.Controls.Add(this.btnMonCom);
-            this.pnlDanhMucNV.Controls.Add(this.btnMonCanh);
-            this.pnlDanhMucNV.Controls.Add(this.btnMonThem);
-            this.pnlDanhMucNV.Controls.Add(this.btnGiaiKhat);
-            this.pnlDanhMucNV.Location = new System.Drawing.Point(7, 7);
-            this.pnlDanhMucNV.Name = "pnlDanhMucNV";
-            this.pnlDanhMucNV.Size = new System.Drawing.Size(951, 88);
-            this.pnlDanhMucNV.TabIndex = 1;
-            // 
-            // btnTatCa
-            // 
-            this.btnTatCa.Location = new System.Drawing.Point(3, 3);
-            this.btnTatCa.Name = "btnTatCa";
-            this.btnTatCa.Size = new System.Drawing.Size(149, 67);
-            this.btnTatCa.TabIndex = 5;
-            this.btnTatCa.Text = "Tất Cả";
-            this.btnTatCa.UseVisualStyleBackColor = true;
-            // 
-            // btnMonCom
-            // 
-            this.btnMonCom.Location = new System.Drawing.Point(158, 3);
-            this.btnMonCom.Name = "btnMonCom";
-            this.btnMonCom.Size = new System.Drawing.Size(149, 67);
-            this.btnMonCom.TabIndex = 6;
-            this.btnMonCom.Text = "Món Cơm";
-            this.btnMonCom.UseVisualStyleBackColor = true;
-            // 
-            // btnMonCanh
-            // 
-            this.btnMonCanh.Location = new System.Drawing.Point(313, 3);
-            this.btnMonCanh.Name = "btnMonCanh";
-            this.btnMonCanh.Size = new System.Drawing.Size(149, 67);
-            this.btnMonCanh.TabIndex = 7;
-            this.btnMonCanh.Text = "Món Canh";
-            this.btnMonCanh.UseVisualStyleBackColor = true;
-            // 
-            // btnMonThem
-            // 
-            this.btnMonThem.Location = new System.Drawing.Point(468, 3);
-            this.btnMonThem.Name = "btnMonThem";
-            this.btnMonThem.Size = new System.Drawing.Size(149, 67);
-            this.btnMonThem.TabIndex = 8;
-            this.btnMonThem.Text = "Món Thêm";
-            this.btnMonThem.UseVisualStyleBackColor = true;
-            // 
-            // btnGiaiKhat
-            // 
-            this.btnGiaiKhat.Location = new System.Drawing.Point(623, 3);
-            this.btnGiaiKhat.Name = "btnGiaiKhat";
-            this.btnGiaiKhat.Size = new System.Drawing.Size(149, 67);
-            this.btnGiaiKhat.TabIndex = 9;
-            this.btnGiaiKhat.Text = "Giải Khát";
-            this.btnGiaiKhat.UseVisualStyleBackColor = true;
+            this.lvMonAn.HideSelection = false;
+            this.lvMonAn.Location = new System.Drawing.Point(6, 101);
+            this.lvMonAn.Name = "lvMonAn";
+            this.lvMonAn.Size = new System.Drawing.Size(952, 356);
+            this.lvMonAn.TabIndex = 0;
+            this.lvMonAn.UseCompatibleStateImageBehavior = false;
             // 
             // tabThucDon
             // 
-            this.tabThucDon.Controls.Add(this.pnlDanhMucNV);
-            this.tabThucDon.Controls.Add(this.lvMonAnNV);
+            this.tabThucDon.Controls.Add(this.flpDanhMuc);
+            this.tabThucDon.Controls.Add(this.lvMonAn);
             this.tabThucDon.Location = new System.Drawing.Point(4, 28);
             this.tabThucDon.Name = "tabThucDon";
             this.tabThucDon.Padding = new System.Windows.Forms.Padding(3);
@@ -425,6 +364,14 @@
             this.tabThucDon.TabIndex = 0;
             this.tabThucDon.Text = "Thực Đơn";
             this.tabThucDon.UseVisualStyleBackColor = true;
+            // 
+            // flpDanhMuc
+            // 
+            this.flpDanhMuc.AutoScroll = true;
+            this.flpDanhMuc.Location = new System.Drawing.Point(6, 6);
+            this.flpDanhMuc.Name = "flpDanhMuc";
+            this.flpDanhMuc.Size = new System.Drawing.Size(952, 89);
+            this.flpDanhMuc.TabIndex = 2;
             // 
             // tabMain
             // 
@@ -442,6 +389,12 @@
             // ofdAVT
             // 
             this.ofdAVT.FileName = "openFileDialog1";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 5000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // frmNhanVienMain
             // 
@@ -466,7 +419,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTiet)).EndInit();
             this.tabBan.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBan)).EndInit();
-            this.pnlDanhMucNV.ResumeLayout(false);
             this.tabThucDon.ResumeLayout(false);
             this.tabMain.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -486,8 +438,7 @@
         private System.Windows.Forms.Button btnCapNhatBan;
         private System.Windows.Forms.ComboBox cboTrangThaiBan;
         private System.Windows.Forms.DataGridView dgvBan;
-        private System.Windows.Forms.ListView lvMonAnNV;
-        private System.Windows.Forms.FlowLayoutPanel pnlDanhMucNV;
+        private System.Windows.Forms.ListView lvMonAn;
         private System.Windows.Forms.TabPage tabThucDon;
         private System.Windows.Forms.TabControl tabMain;
         private System.Windows.Forms.Button btnCapNhatTrangThai;
@@ -502,14 +453,11 @@
         private System.Windows.Forms.Button btnThanhToan;
         private System.Windows.Forms.TextBox txtGhiChu;
         private System.Windows.Forms.Label lblMaDon;
-        private System.Windows.Forms.Button btnTatCa;
-        private System.Windows.Forms.Button btnMonCom;
-        private System.Windows.Forms.Button btnMonCanh;
-        private System.Windows.Forms.Button btnMonThem;
-        private System.Windows.Forms.Button btnGiaiKhat;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.Label lblVaiTro;
         private System.Windows.Forms.PictureBox pBAVT;
         private System.Windows.Forms.OpenFileDialog ofdAVT;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.FlowLayoutPanel flpDanhMuc;
     }
 }

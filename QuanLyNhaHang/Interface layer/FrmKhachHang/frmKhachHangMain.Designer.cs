@@ -30,12 +30,6 @@
         {
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabThucDon = new System.Windows.Forms.TabPage();
-            this.pnlDanhMuc = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnTatCa = new System.Windows.Forms.Button();
-            this.btnMonCom = new System.Windows.Forms.Button();
-            this.btnMonCanh = new System.Windows.Forms.Button();
-            this.btnMonThem = new System.Windows.Forms.Button();
-            this.btnGiaiKhat = new System.Windows.Forms.Button();
             this.lvMonAn = new System.Windows.Forms.ListView();
             this.tabDatBan = new System.Windows.Forms.TabPage();
             this.btnDatBan = new System.Windows.Forms.Button();
@@ -46,6 +40,7 @@
             this.btnHuyDatBan = new System.Windows.Forms.Button();
             this.dgvDonHang = new System.Windows.Forms.DataGridView();
             this.tabThongTin = new System.Windows.Forms.TabPage();
+            this.pBAVT = new System.Windows.Forms.PictureBox();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,16 +54,15 @@
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.lblChaoMung = new System.Windows.Forms.Label();
             this.ofdKhachHang = new System.Windows.Forms.OpenFileDialog();
-            this.pBAVT = new System.Windows.Forms.PictureBox();
+            this.flpDanhMuc = new System.Windows.Forms.FlowLayoutPanel();
             this.tabMain.SuspendLayout();
             this.tabThucDon.SuspendLayout();
-            this.pnlDanhMuc.SuspendLayout();
             this.tabDatBan.SuspendLayout();
             this.tabLichSu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonHang)).BeginInit();
             this.tabThongTin.SuspendLayout();
-            this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pBAVT)).BeginInit();
+            this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabMain
@@ -86,7 +80,7 @@
             // 
             // tabThucDon
             // 
-            this.tabThucDon.Controls.Add(this.pnlDanhMuc);
+            this.tabThucDon.Controls.Add(this.flpDanhMuc);
             this.tabThucDon.Controls.Add(this.lvMonAn);
             this.tabThucDon.Location = new System.Drawing.Point(4, 28);
             this.tabThucDon.Name = "tabThucDon";
@@ -95,63 +89,6 @@
             this.tabThucDon.TabIndex = 0;
             this.tabThucDon.Text = "Thực Đơn";
             this.tabThucDon.UseVisualStyleBackColor = true;
-            // 
-            // pnlDanhMuc
-            // 
-            this.pnlDanhMuc.Controls.Add(this.btnTatCa);
-            this.pnlDanhMuc.Controls.Add(this.btnMonCom);
-            this.pnlDanhMuc.Controls.Add(this.btnMonCanh);
-            this.pnlDanhMuc.Controls.Add(this.btnMonThem);
-            this.pnlDanhMuc.Controls.Add(this.btnGiaiKhat);
-            this.pnlDanhMuc.Location = new System.Drawing.Point(6, 7);
-            this.pnlDanhMuc.Name = "pnlDanhMuc";
-            this.pnlDanhMuc.Size = new System.Drawing.Size(951, 88);
-            this.pnlDanhMuc.TabIndex = 1;
-            // 
-            // btnTatCa
-            // 
-            this.btnTatCa.Location = new System.Drawing.Point(3, 3);
-            this.btnTatCa.Name = "btnTatCa";
-            this.btnTatCa.Size = new System.Drawing.Size(149, 67);
-            this.btnTatCa.TabIndex = 0;
-            this.btnTatCa.Text = "Tất Cả";
-            this.btnTatCa.UseVisualStyleBackColor = true;
-            // 
-            // btnMonCom
-            // 
-            this.btnMonCom.Location = new System.Drawing.Point(158, 3);
-            this.btnMonCom.Name = "btnMonCom";
-            this.btnMonCom.Size = new System.Drawing.Size(149, 67);
-            this.btnMonCom.TabIndex = 1;
-            this.btnMonCom.Text = "Món Cơm";
-            this.btnMonCom.UseVisualStyleBackColor = true;
-            // 
-            // btnMonCanh
-            // 
-            this.btnMonCanh.Location = new System.Drawing.Point(313, 3);
-            this.btnMonCanh.Name = "btnMonCanh";
-            this.btnMonCanh.Size = new System.Drawing.Size(149, 67);
-            this.btnMonCanh.TabIndex = 2;
-            this.btnMonCanh.Text = "Món Canh";
-            this.btnMonCanh.UseVisualStyleBackColor = true;
-            // 
-            // btnMonThem
-            // 
-            this.btnMonThem.Location = new System.Drawing.Point(468, 3);
-            this.btnMonThem.Name = "btnMonThem";
-            this.btnMonThem.Size = new System.Drawing.Size(149, 67);
-            this.btnMonThem.TabIndex = 3;
-            this.btnMonThem.Text = "Món Thêm";
-            this.btnMonThem.UseVisualStyleBackColor = true;
-            // 
-            // btnGiaiKhat
-            // 
-            this.btnGiaiKhat.Location = new System.Drawing.Point(623, 3);
-            this.btnGiaiKhat.Name = "btnGiaiKhat";
-            this.btnGiaiKhat.Size = new System.Drawing.Size(149, 67);
-            this.btnGiaiKhat.TabIndex = 4;
-            this.btnGiaiKhat.Text = "Giải Khát";
-            this.btnGiaiKhat.UseVisualStyleBackColor = true;
             // 
             // lvMonAn
             // 
@@ -266,6 +203,17 @@
             this.tabThongTin.Text = "Thông Tin";
             this.tabThongTin.UseVisualStyleBackColor = true;
             // 
+            // pBAVT
+            // 
+            this.pBAVT.Location = new System.Drawing.Point(30, 31);
+            this.pBAVT.Name = "pBAVT";
+            this.pBAVT.Size = new System.Drawing.Size(180, 180);
+            this.pBAVT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pBAVT.TabIndex = 9;
+            this.pBAVT.TabStop = false;
+            this.pBAVT.Click += new System.EventHandler(this.pBAVT_Click);
+            this.pBAVT.Paint += new System.Windows.Forms.PaintEventHandler(this.pBAVT_Paint);
+            // 
             // btnCapNhat
             // 
             this.btnCapNhat.Location = new System.Drawing.Point(601, 286);
@@ -373,16 +321,13 @@
             // 
             this.ofdKhachHang.FileName = "openFileDialog1";
             // 
-            // pBAVT
+            // flpDanhMuc
             // 
-            this.pBAVT.Location = new System.Drawing.Point(30, 31);
-            this.pBAVT.Name = "pBAVT";
-            this.pBAVT.Size = new System.Drawing.Size(180, 180);
-            this.pBAVT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pBAVT.TabIndex = 9;
-            this.pBAVT.TabStop = false;
-            this.pBAVT.Click += new System.EventHandler(this.pBAVT_Click);
-            this.pBAVT.Paint += new System.Windows.Forms.PaintEventHandler(this.pBAVT_Paint);
+            this.flpDanhMuc.AutoScroll = true;
+            this.flpDanhMuc.Location = new System.Drawing.Point(6, 8);
+            this.flpDanhMuc.Name = "flpDanhMuc";
+            this.flpDanhMuc.Size = new System.Drawing.Size(952, 86);
+            this.flpDanhMuc.TabIndex = 1;
             // 
             // frmKhachHangMain
             // 
@@ -398,16 +343,15 @@
             this.Load += new System.EventHandler(this.frmKhachHangMain_Load);
             this.tabMain.ResumeLayout(false);
             this.tabThucDon.ResumeLayout(false);
-            this.pnlDanhMuc.ResumeLayout(false);
             this.tabDatBan.ResumeLayout(false);
             this.tabDatBan.PerformLayout();
             this.tabLichSu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDonHang)).EndInit();
             this.tabThongTin.ResumeLayout(false);
             this.tabThongTin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pBAVT)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pBAVT)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -432,19 +376,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnCapNhat;
         private System.Windows.Forms.ListView lvMonAn;
-        private System.Windows.Forms.FlowLayoutPanel pnlDanhMuc;
         private System.Windows.Forms.TabPage tabDatBan;
         private System.Windows.Forms.ListBox lbDanhSachBan;
         private System.Windows.Forms.Label lblChonBan;
         private System.Windows.Forms.Label lblThongTinBan;
         private System.Windows.Forms.Button btnDatBan;
         private System.Windows.Forms.Button btnHuyDatBan;
-        private System.Windows.Forms.Button btnTatCa;
-        private System.Windows.Forms.Button btnMonCom;
-        private System.Windows.Forms.Button btnMonCanh;
-        private System.Windows.Forms.Button btnMonThem;
-        private System.Windows.Forms.Button btnGiaiKhat;
         private System.Windows.Forms.OpenFileDialog ofdKhachHang;
         private System.Windows.Forms.PictureBox pBAVT;
+        private System.Windows.Forms.FlowLayoutPanel flpDanhMuc;
     }
 }

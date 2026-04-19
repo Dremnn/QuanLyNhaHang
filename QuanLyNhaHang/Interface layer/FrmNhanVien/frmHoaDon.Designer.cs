@@ -52,6 +52,7 @@
             this.Name = "frmHoaDon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hóa Đơn";
+            this.Load += new System.EventHandler(this.frmHoaDon_Load);
             this.ResumeLayout(false);
 
         }

@@ -13,7 +13,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace QuanLyNhaHang.Interface_layer.Admin
 {
     public partial class frmBaoCaoReport : Form
@@ -62,8 +61,7 @@ namespace QuanLyNhaHang.Interface_layer.Admin
 
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(
-                new ReportDataSource("dsReport_ThanhToan", dt.DefaultView));
-
+                new ReportDataSource("dsReport_ThanhToan", dt.DefaultView));  // cast rõ ràng
             reportViewer1.RefreshReport();
         }
     }

@@ -52,19 +52,14 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
             cboPhuongThuc.Items.Add("ViDienTu");
             cboPhuongThuc.SelectedIndex = 0;
 
-            // Gán sự kiện cho button danh mục
-            btnTatCa.Click += (s, ev) => loadMonAnNV(0);
-            btnMonCom.Click += (s, ev) => loadMonAnNV(1);
-            btnMonCanh.Click += (s, ev) => loadMonAnNV(2);
-            btnMonThem.Click += (s, ev) => loadMonAnNV(3);
-            btnGiaiKhat.Click += (s, ev) => loadMonAnNV(4);
+            LoadDynamicDanhMuc();
 
             LoadAvatar(
                 SessionHelper.CurrentUser.VaiTro.ToString(), 
                 SessionHelper.CurrentUser.HinhAnh
              );
 
-            loadMonAnNV(0);
+            loadMonAn(0);
             loadDanhSachBan();
             loadDonHangDangMo();
         }
@@ -213,7 +208,6 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
 
             dgvChiTiet.Rows.Clear();
             dgvChiTiet.Columns.Clear();
-            selectedDonHangId = -1;
         }
 
         private void dgvDonHang_SelectionChanged(object sender, EventArgs e)
@@ -491,12 +485,50 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
         }
 
         // ==========================================
-        // TAB THỰC ĐƠN — giữ nguyên vì đây là dynamic UI hợp lệ
+        // TAB THỰC ĐƠN 
         // ==========================================
 
-        private void loadMonAnNV(int danhMucId)
+        private void LoadDynamicDanhMuc()
         {
-            lvMonAnNV.Items.Clear();
+            // 1. Xóa hết các control cũ trong panel để tránh trùng lặp khi load lại
+            flpDanhMuc.Controls.Clear();
+
+            // 2. Tạo nút "Tất cả" mặc định
+            Button btnAll = new Button();
+            btnAll.Text = "Tất cả";
+            btnAll.Width = 120; // Bạn có thể chỉnh kích thước theo ý muốn
+            btnAll.Height = 45;
+            btnAll.Click += (s, ev) => loadMonAn(0); // Gọi hàm load toàn bộ món
+            flpDanhMuc.Controls.Add(btnAll);
+
+            // 3. Lấy danh sách danh mục từ BLL
+            List<DanhMuc> listDM = danhMucBLL.getAll();
+
+            foreach (DanhMuc dm in listDM)
+            {
+                // 4. Khởi tạo một nút mới cho mỗi danh mục
+                Button btn = new Button();
+                btn.Text = dm.TenDanhMuc;
+                btn.Width = 120;
+                btn.Height = 45;
+
+                // Lưu ID vào Tag để dùng khi click (hoặc dùng trực tiếp trong lambda)
+                btn.Tag = dm.Id;
+
+                // 5. Gán sự kiện Click bằng Lambda Expression
+                btn.Click += (s, ev) => {
+                    // Khi click sẽ gọi hàm loadMonAn với ID của danh mục đó
+                    loadMonAn(dm.Id);
+                };
+
+                // 6. Đưa nút vào FlowLayoutPanel
+                flpDanhMuc.Controls.Add(btn);
+            }
+        }
+
+        private void loadMonAn(int danhMucId)
+        {
+            lvMonAn.Items.Clear();
 
             ImageList imgList = new ImageList();
             imgList.ImageSize = new Size(100, 100);
@@ -509,29 +541,43 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
             int index = 0;
             foreach (MonAn mon in list)
             {
-                string fullPath = System.IO.Path.Combine(
-                    Application.StartupPath, mon.AnhUrl ?? "");
+                // ==========================================
+                // 1. GỌI HÀM TÍNH GIÁ TỪ COMPOSITE PATTERN
+                // ==========================================
+                decimal giaHienThi = monAnBLL.TinhGiaThucTe(mon);
 
-                Image img = System.IO.File.Exists(fullPath)
-                    ? Image.FromFile(fullPath)
-                    : Properties.Resources.default_image;
+                // Load ảnh
+                string fullPath = Path.Combine(Application.StartupPath, mon.AnhUrl ?? "");
+                Image img;
+
+                if (!string.IsNullOrEmpty(mon.AnhUrl) && File.Exists(fullPath))
+                    img = Image.FromFile(fullPath);
+                else
+                    img = Properties.Resources.default_image;
 
                 imgList.Images.Add(img);
 
+                // Tạo item
                 ListViewItem item = new ListViewItem();
-                item.Text = $"{mon.TenMon}\n{mon.GiaBan:N0}đ";
+
+                // ==========================================
+                // 2. THAY VÌ mon.GiaBan, TA DÙNG giaHienThi
+                // ==========================================
+                item.Text = $"{mon.TenMon}\n{giaHienThi:N0}đ";
                 item.ImageIndex = index;
+
+                // Vẫn lưu nguyên object mon vào Tag để khi click lấy đúng ID truyền xuống giỏ hàng
                 item.Tag = mon;
 
                 if (!mon.ConHang)
                     item.ForeColor = Color.Gray;
 
-                lvMonAnNV.Items.Add(item);
+                lvMonAn.Items.Add(item);
                 index++;
             }
 
-            lvMonAnNV.LargeImageList = imgList;
-            lvMonAnNV.View = View.LargeIcon;
+            lvMonAn.LargeImageList = imgList;
+            lvMonAn.View = View.LargeIcon;
         }
 
         // ==========================================
@@ -613,5 +659,44 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
             catch (Exception ex) { MessageBox.Show("Lỗi khi tải ảnh: " + ex.Message); }
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // 1. Lưu lại ID đơn hàng nhân viên đang xem (nếu có)
+            int currentId = selectedDonHangId;
+
+            // 2. Tạm thời ngắt sự kiện SelectionChanged để không bị giật/lag DataGridView chi tiết
+            dgvDonHang.SelectionChanged -= dgvDonHang_SelectionChanged;
+
+            // 3. Tải lại dữ liệu mới từ Database
+            loadDonHangDangMo();
+
+            // 4. Tìm và bôi đen lại đúng dòng đơn hàng lúc nãy
+            if (currentId != -1)
+            {
+                bool found = false;
+                foreach (DataGridViewRow row in dgvDonHang.Rows)
+                {
+                    if (Convert.ToInt32(row.Cells["colDHId"].Value) == currentId)
+                    {
+                        row.Selected = true;
+                        selectedDonHangId = currentId;
+                        loadChiTietDon(currentId); // Load lại danh sách món của đơn đó
+                        found = true;
+                        break;
+                    }
+                }
+
+                // Nếu đơn hàng đã bị hoàn thành/hủy và biến mất khỏi danh sách
+                if (!found)
+                {
+                    selectedDonHangId = -1;
+                    dgvChiTiet.Rows.Clear();
+                    lblTongTien.Text = "Tổng tiền: 0đ";
+                }
+            }
+
+            // 5. Gắn lại sự kiện SelectionChanged
+            dgvDonHang.SelectionChanged += dgvDonHang_SelectionChanged;
+        }
     }
 }

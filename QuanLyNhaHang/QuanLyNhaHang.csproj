@@ -209,8 +209,10 @@
     <Compile Include="Model\Admin.cs" />
     <Compile Include="Model\Ban.cs" />
     <Compile Include="Model\ChiTietDon.cs" />
+    <Compile Include="Model\ComboMonAn.cs" />
     <Compile Include="Model\DanhMuc.cs" />
     <Compile Include="Model\DonHang.cs" />
+    <Compile Include="Model\IMonAnComponent.cs" />
     <Compile Include="Model\KhachHang.cs" />
     <Compile Include="Model\MonAn.cs" />
     <Compile Include="Model\MonAnBanChay.cs" />

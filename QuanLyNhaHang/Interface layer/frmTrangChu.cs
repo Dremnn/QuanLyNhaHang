@@ -16,6 +16,7 @@ namespace QuanLyNhaHang.Interface_layer
     public partial class frmTrangChu : Form
     {
         private MonAnBLL monAnBLL = new MonAnBLL();
+        private DanhMucBLL danhMucBLL = new DanhMucBLL();
 
         public frmTrangChu()
         {
@@ -34,12 +35,7 @@ namespace QuanLyNhaHang.Interface_layer
                 picBanner.Image = Image.FromFile(bannerPath);
             }
 
-            // 2. Gán sự kiện click cho các nút danh mục bằng Lambda Expression
-            btnTatCa.Click += (s, ev) => loadMonAn(0);
-            btnMonCom.Click += (s, ev) => loadMonAn(1);
-            btnMonCanh.Click += (s, ev) => loadMonAn(2);
-            btnMonThem.Click += (s, ev) => loadMonAn(3);
-            btnGiaiKhat.Click += (s, ev) => loadMonAn(4);
+            LoadDynamicDanhMuc();
 
             loadMonAn(0);
         }
@@ -49,12 +45,10 @@ namespace QuanLyNhaHang.Interface_layer
         // ==========================================
         private void loadMonAn(int danhMucId)
         {
-            if (lvMonAn == null) return;
-
             lvMonAn.Items.Clear();
 
             ImageList imgList = new ImageList();
-            imgList.ImageSize = new Size(120, 120);
+            imgList.ImageSize = new Size(100, 100);
             imgList.ColorDepth = ColorDepth.Depth32Bit;
 
             List<MonAn> list = danhMucId == 0
@@ -64,21 +58,34 @@ namespace QuanLyNhaHang.Interface_layer
             int index = 0;
             foreach (MonAn mon in list)
             {
-                string fullPath = Path.Combine(Application.StartupPath, mon.AnhUrl ?? "");
+                // ==========================================
+                // 1. GỌI HÀM TÍNH GIÁ TỪ COMPOSITE PATTERN
+                // ==========================================
+                decimal giaHienThi = monAnBLL.TinhGiaThucTe(mon);
 
-                // Nếu không tìm thấy ảnh theo đường dẫn, lấy ảnh mặc định trong Resources
-                Image img = File.Exists(fullPath)
-                    ? Image.FromFile(fullPath)
-                    : Properties.Resources.default_image;
+                // Load ảnh
+                string fullPath = Path.Combine(Application.StartupPath, mon.AnhUrl ?? "");
+                Image img;
+
+                if (!string.IsNullOrEmpty(mon.AnhUrl) && File.Exists(fullPath))
+                    img = Image.FromFile(fullPath);
+                else
+                    img = Properties.Resources.default_image;
 
                 imgList.Images.Add(img);
 
+                // Tạo item
                 ListViewItem item = new ListViewItem();
-                item.Text = $"{mon.TenMon}\n{mon.GiaBan:N0}đ";
+
+                // ==========================================
+                // 2. THAY VÌ mon.GiaBan, TA DÙNG giaHienThi
+                // ==========================================
+                item.Text = $"{mon.TenMon}\n{giaHienThi:N0}đ";
                 item.ImageIndex = index;
+
+                // Vẫn lưu nguyên object mon vào Tag để khi click lấy đúng ID truyền xuống giỏ hàng
                 item.Tag = mon;
 
-                // Làm mờ món đã hết hàng
                 if (!mon.ConHang)
                     item.ForeColor = Color.Gray;
 
@@ -131,6 +138,44 @@ namespace QuanLyNhaHang.Interface_layer
                     SessionHelper.logout(); // Xoá tài khoản khỏi bộ nhớ
                     this.Show(); // Hiện lại form Trang Chủ ban đầu
                 }
+            }
+        }
+
+        private void LoadDynamicDanhMuc()
+        {
+            // 1. Xóa hết các control cũ trong panel để tránh trùng lặp khi load lại
+            flpDanhMuc.Controls.Clear();
+
+            // 2. Tạo nút "Tất cả" mặc định
+            Button btnAll = new Button();
+            btnAll.Text = "Tất cả";
+            btnAll.Width = 120; // Bạn có thể chỉnh kích thước theo ý muốn
+            btnAll.Height = 45;
+            btnAll.Click += (s, ev) => loadMonAn(0); // Gọi hàm load toàn bộ món
+            flpDanhMuc.Controls.Add(btnAll);
+
+            // 3. Lấy danh sách danh mục từ BLL
+            List<DanhMuc> listDM = danhMucBLL.getAll();
+
+            foreach (DanhMuc dm in listDM)
+            {
+                // 4. Khởi tạo một nút mới cho mỗi danh mục
+                Button btn = new Button();
+                btn.Text = dm.TenDanhMuc;
+                btn.Width = 120;
+                btn.Height = 45;
+
+                // Lưu ID vào Tag để dùng khi click (hoặc dùng trực tiếp trong lambda)
+                btn.Tag = dm.Id;
+
+                // 5. Gán sự kiện Click bằng Lambda Expression
+                btn.Click += (s, ev) => {
+                    // Khi click sẽ gọi hàm loadMonAn với ID của danh mục đó
+                    loadMonAn(dm.Id);
+                };
+
+                // 6. Đưa nút vào FlowLayoutPanel
+                flpDanhMuc.Controls.Add(btn);
             }
         }
 

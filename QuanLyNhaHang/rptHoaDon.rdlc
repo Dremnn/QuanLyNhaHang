@@ -214,6 +214,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -339,8 +340,8 @@
         </TablixRowHierarchy>
         <DataSetName>dsReport_ChiTietDon</DataSetName>
         <Top>0.762cm</Top>
-        <Height>1.40833in</Height>
-        <Width>7.58333in</Width>
+        <Height>1.40832in</Height>
+        <Width>7.58332in</Width>
         <Style>
           <Border>
             <Style>None</Style>
