@@ -490,38 +490,59 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
 
         private void LoadDynamicDanhMuc()
         {
-            // 1. Xóa hết các control cũ trong panel để tránh trùng lặp khi load lại
             flpDanhMuc.Controls.Clear();
 
-            // 2. Tạo nút "Tất cả" mặc định
+            // === KÍCH THƯỚC ĐÃ ĐƯỢC ÉP CHUẨN VỚI FLP CỦA BẠN (955 x 106) ===
+            int chieuRongNut = 100;
+            int chieuCaoNut = 50; // Form bạn cao 106, nút cao 65 là cân đối
+
+            // Font chữ
+            Font fontChu = new Font("Segoe UI", 10F, FontStyle.Bold);
+
+            // Lề: Trái 5, Trên 15 (để nút tụt xuống giữa panel), Phải 5, Dưới 0
+            Padding khoangCach = new Padding(5, 15, 5, 0);
+
+            // 1. NÚT "TẤT CẢ"
             Button btnAll = new Button();
             btnAll.Text = "Tất cả";
-            btnAll.Width = 120; // Bạn có thể chỉnh kích thước theo ý muốn
-            btnAll.Height = 45;
-            btnAll.Click += (s, ev) => loadMonAn(0); // Gọi hàm load toàn bộ món
+            btnAll.Size = new Size(chieuRongNut, chieuCaoNut);
+            btnAll.Font = fontChu;
+            btnAll.Margin = khoangCach;
+
+            // KIỂU DÁNG TRẮNG ĐƠN GIẢN
+            btnAll.BackColor = Color.White;
+            btnAll.ForeColor = Color.Black;
+            btnAll.FlatStyle = FlatStyle.Flat;
+            btnAll.FlatAppearance.BorderColor = Color.Silver; // Viền màu bạc
+            btnAll.FlatAppearance.BorderSize = 1;
+            btnAll.Cursor = Cursors.Hand;
+
+            btnAll.Click += (s, ev) => loadMonAn(0);
             flpDanhMuc.Controls.Add(btnAll);
 
-            // 3. Lấy danh sách danh mục từ BLL
+            // 2. CÁC NÚT TỪ DATABASE
             List<DanhMuc> listDM = danhMucBLL.getAll();
-
             foreach (DanhMuc dm in listDM)
             {
-                // 4. Khởi tạo một nút mới cho mỗi danh mục
                 Button btn = new Button();
                 btn.Text = dm.TenDanhMuc;
-                btn.Width = 120;
-                btn.Height = 45;
-
-                // Lưu ID vào Tag để dùng khi click (hoặc dùng trực tiếp trong lambda)
+                btn.Size = new Size(chieuRongNut, chieuCaoNut);
+                btn.Font = fontChu;
+                btn.Margin = khoangCach;
                 btn.Tag = dm.Id;
 
-                // 5. Gán sự kiện Click bằng Lambda Expression
+                // KIỂU DÁNG TRẮNG ĐƠN GIẢN
+                btn.BackColor = Color.White;
+                btn.ForeColor = Color.Black;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.FlatAppearance.BorderColor = Color.Silver;
+                btn.FlatAppearance.BorderSize = 1;
+                btn.Cursor = Cursors.Hand;
+
                 btn.Click += (s, ev) => {
-                    // Khi click sẽ gọi hàm loadMonAn với ID của danh mục đó
                     loadMonAn(dm.Id);
                 };
 
-                // 6. Đưa nút vào FlowLayoutPanel
                 flpDanhMuc.Controls.Add(btn);
             }
         }

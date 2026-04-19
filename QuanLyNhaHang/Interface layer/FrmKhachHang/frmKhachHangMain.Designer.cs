@@ -30,10 +30,10 @@
         {
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabThucDon = new System.Windows.Forms.TabPage();
+            this.flpDanhMuc = new System.Windows.Forms.FlowLayoutPanel();
             this.lvMonAn = new System.Windows.Forms.ListView();
             this.tabDatBan = new System.Windows.Forms.TabPage();
             this.btnDatBan = new System.Windows.Forms.Button();
-            this.lblThongTinBan = new System.Windows.Forms.Label();
             this.lbDanhSachBan = new System.Windows.Forms.ListBox();
             this.lblChonBan = new System.Windows.Forms.Label();
             this.tabLichSu = new System.Windows.Forms.TabPage();
@@ -54,7 +54,6 @@
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.lblChaoMung = new System.Windows.Forms.Label();
             this.ofdKhachHang = new System.Windows.Forms.OpenFileDialog();
-            this.flpDanhMuc = new System.Windows.Forms.FlowLayoutPanel();
             this.tabMain.SuspendLayout();
             this.tabThucDon.SuspendLayout();
             this.tabDatBan.SuspendLayout();
@@ -90,6 +89,14 @@
             this.tabThucDon.Text = "Thực Đơn";
             this.tabThucDon.UseVisualStyleBackColor = true;
             // 
+            // flpDanhMuc
+            // 
+            this.flpDanhMuc.AutoScroll = true;
+            this.flpDanhMuc.Location = new System.Drawing.Point(6, 8);
+            this.flpDanhMuc.Name = "flpDanhMuc";
+            this.flpDanhMuc.Size = new System.Drawing.Size(952, 86);
+            this.flpDanhMuc.TabIndex = 1;
+            // 
             // lvMonAn
             // 
             this.lvMonAn.HideSelection = false;
@@ -102,7 +109,6 @@
             // tabDatBan
             // 
             this.tabDatBan.Controls.Add(this.btnDatBan);
-            this.tabDatBan.Controls.Add(this.lblThongTinBan);
             this.tabDatBan.Controls.Add(this.lbDanhSachBan);
             this.tabDatBan.Controls.Add(this.lblChonBan);
             this.tabDatBan.Location = new System.Drawing.Point(4, 28);
@@ -122,15 +128,6 @@
             this.btnDatBan.Text = "Đặt Bàn";
             this.btnDatBan.UseVisualStyleBackColor = true;
             this.btnDatBan.Click += new System.EventHandler(this.btnDatBan_Click);
-            // 
-            // lblThongTinBan
-            // 
-            this.lblThongTinBan.AutoSize = true;
-            this.lblThongTinBan.Location = new System.Drawing.Point(186, 99);
-            this.lblThongTinBan.Name = "lblThongTinBan";
-            this.lblThongTinBan.Size = new System.Drawing.Size(109, 19);
-            this.lblThongTinBan.TabIndex = 2;
-            this.lblThongTinBan.Text = "Thông tin bàn :";
             // 
             // lbDanhSachBan
             // 
@@ -321,14 +318,6 @@
             // 
             this.ofdKhachHang.FileName = "openFileDialog1";
             // 
-            // flpDanhMuc
-            // 
-            this.flpDanhMuc.AutoScroll = true;
-            this.flpDanhMuc.Location = new System.Drawing.Point(6, 8);
-            this.flpDanhMuc.Name = "flpDanhMuc";
-            this.flpDanhMuc.Size = new System.Drawing.Size(952, 86);
-            this.flpDanhMuc.TabIndex = 1;
-            // 
             // frmKhachHangMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -379,7 +368,6 @@
         private System.Windows.Forms.TabPage tabDatBan;
         private System.Windows.Forms.ListBox lbDanhSachBan;
         private System.Windows.Forms.Label lblChonBan;
-        private System.Windows.Forms.Label lblThongTinBan;
         private System.Windows.Forms.Button btnDatBan;
         private System.Windows.Forms.Button btnHuyDatBan;
         private System.Windows.Forms.OpenFileDialog ofdKhachHang;
