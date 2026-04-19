@@ -56,13 +56,10 @@ namespace QuanLyNhaHang.DB_layer
         {
             using (SqlConnection conn = DBConnection.GetConnection())
             {
-                string sql = @"UPDATE Ban SET TrangThai = @trangThai
-                               WHERE Id = @id";
-
+                string sql = @"UPDATE Ban SET TrangThai = @trangThai WHERE Id = @id";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@trangThai", trangThai);
                 cmd.Parameters.AddWithValue("@id", banId);
-
                 conn.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }

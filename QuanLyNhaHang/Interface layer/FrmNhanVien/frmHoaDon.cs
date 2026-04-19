@@ -15,6 +15,7 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
         public frmHoaDon(int donHangId)
         {
             InitializeComponent();
+
             _donHangId = donHangId;
         }
 
@@ -38,7 +39,7 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
                     ct.Id,
                     ct.DonHangId,
                     ct.MonAnId,
-                    ct.TenMon,             // ← thêm giá trị này
+                    ct.TenMon,
                     ct.SoLuong,
                     ct.DonGia,
                     ct.GhiChu

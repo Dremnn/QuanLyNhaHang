@@ -50,6 +50,7 @@
             this.btnHuy.Size = new System.Drawing.Size(180, 45);
             this.btnHuy.TabIndex = 8;
             this.btnHuy.Text = "Hủy";
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // btnXacNhan
             // 
@@ -67,6 +68,7 @@
             this.btnXacNhan.Size = new System.Drawing.Size(180, 45);
             this.btnXacNhan.TabIndex = 10;
             this.btnXacNhan.Text = "Xác Nhận";
+            this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
             // lbBan
             // 
