@@ -668,9 +668,9 @@ namespace QuanLyNhaHang.Interface_layer.FrmNhanVien
             try
             {
                 if (string.IsNullOrEmpty(fileNameFromDb)) { pBAVT.Image = Properties.Resources.default_user; return; }
-                string fullPath = Path.Combine(Application.StartupPath, "Avatars", fileNameFromDb);
+                string fullPath = Path.Combine(Application.StartupPath,"Avatars", fileNameFromDb);
                 if (!File.Exists(fullPath))
-                    fullPath = Path.Combine(Application.StartupPath, "Avatars", userRole, fileNameFromDb);
+                    fullPath = Path.Combine(Application.StartupPath,"Avatars", userRole, fileNameFromDb);
                 if (File.Exists(fullPath))
                     using (FileStream fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read))
                         pBAVT.Image = Image.FromStream(fs);

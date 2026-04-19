@@ -432,7 +432,7 @@ namespace QuanLyNhaHang.Interface_layer.FrmKhachHang
                 }
                 string fullPath = Path.Combine(Application.StartupPath, "Avatars", fileNameFromDb);
                 if (!File.Exists(fullPath))
-                    fullPath = Path.Combine(Application.StartupPath, "Avatars", userRole, fileNameFromDb);
+                    fullPath = Path.Combine(Application.StartupPath,"Avatars", userRole, fileNameFromDb);
 
                 if (File.Exists(fullPath))
                 {

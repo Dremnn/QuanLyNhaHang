@@ -80,7 +80,7 @@ namespace QuanLyNhaHang.Interface_layer
                 // ==========================================
                 // 2. THAY VÌ mon.GiaBan, TA DÙNG giaHienThi
                 // ==========================================
-                item.Text = $"{mon.TenMon}\n{giaHienThi:N0}đ";
+                item.Text = $"{mon.TenMon}\n {giaHienThi:N0}đ";
                 item.ImageIndex = index;
 
                 // Vẫn lưu nguyên object mon vào Tag để khi click lấy đúng ID truyền xuống giỏ hàng

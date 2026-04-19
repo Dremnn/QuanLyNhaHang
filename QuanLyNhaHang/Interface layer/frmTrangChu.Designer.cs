@@ -32,10 +32,10 @@
             this.lblTenQuan = new System.Windows.Forms.Label();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabThucDon = new System.Windows.Forms.TabPage();
+            this.lvMonAn = new System.Windows.Forms.ListView();
+            this.flpDanhMuc = new System.Windows.Forms.FlowLayoutPanel();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
-            this.flpDanhMuc = new System.Windows.Forms.FlowLayoutPanel();
-            this.lvMonAn = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.picBanner)).BeginInit();
             this.tabMain.SuspendLayout();
             this.tabThucDon.SuspendLayout();
@@ -46,7 +46,7 @@
             this.picBanner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picBanner.Location = new System.Drawing.Point(0, 0);
             this.picBanner.Name = "picBanner";
-            this.picBanner.Size = new System.Drawing.Size(996, 538);
+            this.picBanner.Size = new System.Drawing.Size(1183, 652);
             this.picBanner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBanner.TabIndex = 0;
             this.picBanner.TabStop = false;
@@ -55,7 +55,7 @@
             // 
             this.lblTenQuan.AutoSize = true;
             this.lblTenQuan.Font = new System.Drawing.Font("Times New Roman", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenQuan.Location = new System.Drawing.Point(324, 23);
+            this.lblTenQuan.Location = new System.Drawing.Point(436, 30);
             this.lblTenQuan.Name = "lblTenQuan";
             this.lblTenQuan.Size = new System.Drawing.Size(383, 67);
             this.lblTenQuan.TabIndex = 1;
@@ -69,7 +69,7 @@
             this.tabMain.Location = new System.Drawing.Point(12, 100);
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(972, 438);
+            this.tabMain.Size = new System.Drawing.Size(1171, 540);
             this.tabMain.TabIndex = 2;
             // 
             // tabThucDon
@@ -79,15 +79,31 @@
             this.tabThucDon.Location = new System.Drawing.Point(4, 28);
             this.tabThucDon.Name = "tabThucDon";
             this.tabThucDon.Padding = new System.Windows.Forms.Padding(3);
-            this.tabThucDon.Size = new System.Drawing.Size(964, 406);
+            this.tabThucDon.Size = new System.Drawing.Size(1163, 508);
             this.tabThucDon.TabIndex = 0;
             this.tabThucDon.Text = "Thực Đơn";
             this.tabThucDon.UseVisualStyleBackColor = true;
             // 
+            // lvMonAn
+            // 
+            this.lvMonAn.Location = new System.Drawing.Point(4, 115);
+            this.lvMonAn.Name = "lvMonAn";
+            this.lvMonAn.Size = new System.Drawing.Size(1153, 397);
+            this.lvMonAn.TabIndex = 1;
+            this.lvMonAn.UseCompatibleStateImageBehavior = false;
+            // 
+            // flpDanhMuc
+            // 
+            this.flpDanhMuc.AutoScroll = true;
+            this.flpDanhMuc.Location = new System.Drawing.Point(3, 3);
+            this.flpDanhMuc.Name = "flpDanhMuc";
+            this.flpDanhMuc.Size = new System.Drawing.Size(1157, 106);
+            this.flpDanhMuc.TabIndex = 0;
+            // 
             // btnDangNhap
             // 
             this.btnDangNhap.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnDangNhap.Location = new System.Drawing.Point(838, 23);
+            this.btnDangNhap.Location = new System.Drawing.Point(1013, 23);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(136, 32);
             this.btnDangNhap.TabIndex = 4;
@@ -98,7 +114,7 @@
             // btnThoat
             // 
             this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnThoat.Location = new System.Drawing.Point(838, 66);
+            this.btnThoat.Location = new System.Drawing.Point(1013, 73);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(136, 32);
             this.btnThoat.TabIndex = 5;
@@ -106,27 +122,11 @@
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
-            // flpDanhMuc
-            // 
-            this.flpDanhMuc.AutoScroll = true;
-            this.flpDanhMuc.Location = new System.Drawing.Point(3, 3);
-            this.flpDanhMuc.Name = "flpDanhMuc";
-            this.flpDanhMuc.Size = new System.Drawing.Size(955, 106);
-            this.flpDanhMuc.TabIndex = 0;
-            // 
-            // lvMonAn
-            // 
-            this.lvMonAn.Location = new System.Drawing.Point(4, 115);
-            this.lvMonAn.Name = "lvMonAn";
-            this.lvMonAn.Size = new System.Drawing.Size(956, 286);
-            this.lvMonAn.TabIndex = 1;
-            this.lvMonAn.UseCompatibleStateImageBehavior = false;
-            // 
             // frmTrangChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(996, 538);
+            this.ClientSize = new System.Drawing.Size(1183, 652);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.tabMain);

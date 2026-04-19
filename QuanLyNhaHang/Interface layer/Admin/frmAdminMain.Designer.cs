@@ -39,6 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabTaiKhoan = new System.Windows.Forms.TabPage();
+            this.btnXoaTaiKhoan = new System.Windows.Forms.Button();
             this.btnKhoaMo = new System.Windows.Forms.Button();
             this.btnDoiVaiTro = new System.Windows.Forms.Button();
             this.cboVaiTro = new System.Windows.Forms.ComboBox();
@@ -67,7 +68,6 @@
             this.lblVaiTro = new System.Windows.Forms.Label();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.ofdAvatar = new System.Windows.Forms.OpenFileDialog();
-            this.btnXoaTaiKhoan = new System.Windows.Forms.Button();
             this.tabMain.SuspendLayout();
             this.tabBaoCao.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonBanChay)).BeginInit();
@@ -207,6 +207,16 @@
             this.tabTaiKhoan.Text = "Tài Khoản";
             this.tabTaiKhoan.UseVisualStyleBackColor = true;
             // 
+            // btnXoaTaiKhoan
+            // 
+            this.btnXoaTaiKhoan.Location = new System.Drawing.Point(746, 220);
+            this.btnXoaTaiKhoan.Name = "btnXoaTaiKhoan";
+            this.btnXoaTaiKhoan.Size = new System.Drawing.Size(175, 34);
+            this.btnXoaTaiKhoan.TabIndex = 4;
+            this.btnXoaTaiKhoan.Text = "Xóa Tài Khoản";
+            this.btnXoaTaiKhoan.UseVisualStyleBackColor = true;
+            this.btnXoaTaiKhoan.Click += new System.EventHandler(this.btnXoaTaiKhoan_Click);
+            // 
             // btnKhoaMo
             // 
             this.btnKhoaMo.Location = new System.Drawing.Point(746, 152);
@@ -319,7 +329,7 @@
             this.dgvMonAn.ReadOnly = true;
             this.dgvMonAn.RowHeadersWidth = 51;
             this.dgvMonAn.RowTemplate.Height = 24;
-            this.dgvMonAn.Size = new System.Drawing.Size(545, 359);
+            this.dgvMonAn.Size = new System.Drawing.Size(646, 359);
             this.dgvMonAn.TabIndex = 1;
             // 
             // tabDanhMuc
@@ -374,7 +384,7 @@
             this.dgvDanhMuc.ReadOnly = true;
             this.dgvDanhMuc.RowHeadersWidth = 51;
             this.dgvDanhMuc.RowTemplate.Height = 24;
-            this.dgvDanhMuc.Size = new System.Drawing.Size(545, 359);
+            this.dgvDanhMuc.Size = new System.Drawing.Size(639, 359);
             this.dgvDanhMuc.TabIndex = 2;
             // 
             // tabBan
@@ -429,7 +439,7 @@
             this.dgvBanAdmin.ReadOnly = true;
             this.dgvBanAdmin.RowHeadersWidth = 51;
             this.dgvBanAdmin.RowTemplate.Height = 24;
-            this.dgvBanAdmin.Size = new System.Drawing.Size(545, 359);
+            this.dgvBanAdmin.Size = new System.Drawing.Size(624, 359);
             this.dgvBanAdmin.TabIndex = 3;
             // 
             // lblAdmin
@@ -496,16 +506,6 @@
             // ofdAvatar
             // 
             this.ofdAvatar.FileName = "openFileDialog1";
-            // 
-            // btnXoaTaiKhoan
-            // 
-            this.btnXoaTaiKhoan.Location = new System.Drawing.Point(746, 220);
-            this.btnXoaTaiKhoan.Name = "btnXoaTaiKhoan";
-            this.btnXoaTaiKhoan.Size = new System.Drawing.Size(175, 34);
-            this.btnXoaTaiKhoan.TabIndex = 4;
-            this.btnXoaTaiKhoan.Text = "Xóa Tài Khoản";
-            this.btnXoaTaiKhoan.UseVisualStyleBackColor = true;
-            this.btnXoaTaiKhoan.Click += new System.EventHandler(this.btnXoaTaiKhoan_Click);
             // 
             // frmAdminMain
             // 
